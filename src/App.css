@@ -1,11 +1,25 @@
 .App{
-  margin: 0 auto;
-  box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
 }
 
 #header{
   width: 100vw;
-  background-color: red;
+  height: 50px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+}
+
+.searchBar{
+  border: 1px solid black;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(15vh + 15vw);
+  height: 25px;
+  padding-inline: 10px;
 }
