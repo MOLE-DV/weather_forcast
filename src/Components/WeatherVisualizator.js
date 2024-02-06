@@ -65,9 +65,9 @@ function Cloudy(){
             <Circle radius="calc(30vh + 30vw)" color="#00B706" x="calc(50vh + 50vw)" y="calc(25vh + 25vw)" renderQueue="2"/>
             <Circle radius="calc(20vh + 20vw)" color="#00A806" x="calc(45vh + 45vw)" y="calc(30vh + 30vw)" renderQueue="1"/>
             <Sun radius="calc(10vh + 10vw)" x="calc(40vh + 40vw)" y="calc(10vh + 10vw)" renderQueue="0" rays="0"/>
-            <Cloud x="calc(55.5vh + 55.5vw)" y="calc(22.5vh + 22.5vw)" color="#A1A1A1" scale=".8" />
-            <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#BABABA" scale=".3" />
-            <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#949494" scale=".5" />
+            <Cloud x="calc(55.5vh + 55.5vw)" y="calc(22.5vh + 22.5vw)" color="#BDBDBD" scale=".8" />
+            <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#C7C2C2" scale=".3" />
+            <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#CDCCCC" scale=".5" />
         </div>
     )
 }

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+let API_KEY = process.env.REACT_APP_TOKEN;
+console.log(API_KEY);
+
 function getCity() {
   const cityName = localStorage.getItem('cityName');
   if (cityName === null || cityName === undefined) return null;
 
-  return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=4898670b87645c0e7d6f9c0739bbf020`;
+  return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 }
 
 function useWeatherData() {

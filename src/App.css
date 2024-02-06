@@ -248,5 +248,22 @@ body{
 
 .cloud{
   filter: drop-shadow(0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.247));
-  animation: 1s forwards goLeft;
 }
+
+
+.cloud *{
+  animation: 2s forwards getDark;
+}
+
+@keyframes goLeft {
+  from{
+    left: 200vw;
+  }
+}
+
+@keyframes goRight {
+  to{
+    left: 200vw;
+  }
+}
+
