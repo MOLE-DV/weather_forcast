@@ -8,12 +8,12 @@ import WeatherVisualizer from './Components/WeatherVisualizator';
 function App() {
   const weatherData = useWeatherData();
 
-
   return (
     <div className="App">
       <Header/>
       <DayInfo width="fit-content" data={weatherData} opacity="0"/>
-      <WeatherVisualizer />
+      <WeatherVisualizer data={weatherData} />
+      <div style={{display: "none"}} id='cur_weather'>{weatherData.weather && weatherData.weather[0]?.main}</div>
     </div>
   );
 }

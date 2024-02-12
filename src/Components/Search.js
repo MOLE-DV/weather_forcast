@@ -9,13 +9,34 @@ function SearchButton(){
     );
 }
 
+async function sleep(s){
+    return new Promise(resolve=>setTimeout(resolve, s * 1000));
+}
+
 window.onload = ()=>{
-    document.getElementById("input").addEventListener('keyup', (e)=>{
+    document.getElementById("input").addEventListener('keyup', async (e)=>{
         if(e.key === "Enter"){
             localStorage.setItem("cityName", document.getElementById("input").value);
+            let weather = document.getElementById("cur_weather").innerText;
+            switch(weather){
+                case "Clouds":
+                    cloudsGoRight();
+                    break;
+                case "Rain":
+                    cloudsGoRight();
+                    break;
+                default: window.location.reload(); break;
+            }
+            await sleep(.5);
             window.location.reload();
         }
     });
+}
+
+function cloudsGoRight(){
+    document.querySelectorAll('.cloud').forEach((e)=>{
+        e.setAttribute('id', 'goRight'); 
+    })
 }
 
 function Search(props){
