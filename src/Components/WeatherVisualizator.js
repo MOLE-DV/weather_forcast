@@ -65,7 +65,7 @@ let currentWeather = null;
 function Sunny(props){
     return(
         <div id="sunny">
-            <Sun radius="calc(10vh + 10vw)" x="calc(40vh + 40vw)" y="calc(10vh + 10vw)" renderQueue="0" rays="10" degrees={props.degrees} />
+             <Sun rays="10" degrees={props.degrees}/>
         </div>
     );
 }
@@ -73,7 +73,7 @@ function Sunny(props){
 function Cloudy(props){
     return(
         <div id="cloudy">
-            <Sun radius="calc(10vh + 10vw)" x="calc(40vh + 40vw)" y="calc(10vh + 10vw)" renderQueue="0" rays="0" degrees={props.degrees}/>
+            <Sun rays="0" degrees={props.degrees}/>
             <Cloud x="calc(55.5vh + 55.5vw)" y="calc(22.5vh + 22.5vw)" color="#BDBDBD" scale=".8" />
             <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#C7C2C2" scale=".3" />
             <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#CDCCCC" scale=".5" />
@@ -84,7 +84,7 @@ function Cloudy(props){
 function Rainy(props){
     return(
         <div id="rainy">
-            <Sun radius="calc(10vh + 10vw)" x="calc(40vh + 40vw)" y="calc(10vh + 10vw)" renderQueue="0" rays="0" degrees={props.degrees}/>
+            <Sun rays="0" degrees={props.degrees}/>
             <Cloud x="calc(55.5vh + 55.5vw)" y="calc(22.5vh + 22.5vw)" color="#BDBDBD" scale=".8" raining={true}/>
             <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#C7C2C2" scale=".3" raining={true}/>
             <Cloud x="calc(125vh + 125vw)" y="calc(22.5vh + 22.5vw)" color="#CDCCCC" scale=".5" raining={true}/>
@@ -96,6 +96,11 @@ function Rainy(props){
  
 function WeatherVisualizer(props){
     let weather = props.data.weather && props.data.weather[0]?.main;
+    if(props.data.weather == 'debug') {
+        if(localStorage.getItem('debug_weather') == undefined) localStorage.setItem('debug_weather', 'debug');
+        weather = localStorage.getItem('debug_weather');
+    };
+
 
     switch(weather){
         case "Clouds":
@@ -107,6 +112,15 @@ function WeatherVisualizer(props){
         case "Rain":
             currentWeather = <Rainy degrees={`${(props.data.main.temp - 274.15 + 1).toFixed(1)} °C`}/>;
             break;
+        case "debug_clear":
+            currentWeather = <Sunny degrees={weather}/>;
+            break;
+        case "debug_rain":
+            currentWeather = <Rainy degrees={weather}/>;
+            break;
+        case "debug_clouds":
+            currentWeather = <Cloudy degrees={weather}/>;
+            break;
         default:
             currentWeather = null;
             break;
@@ -117,8 +131,8 @@ function WeatherVisualizer(props){
 
     return (
         <div id="weatherVisualizer">
-            <Circle style={{height: "calc(30vh + 30vw)", width: "calc(30vh + 30vw)", backgroundColor: "#00B706", zIndex: 2, right: "calc(-10vh - 10vw)", bottom: "calc(-20vh - 20vw)"}}/>
-            <Circle style={{height: "calc(20vh + 20vw)", width: "calc(20vh + 20vw)", backgroundColor: "#00A806", zIndex: 1, right: "calc(3vh + 3vw)", bottom: "calc(-12vh - 12vw)"}}/>
+            <Circle style={{height: "calc(30vh + 30vw)", width: "calc(30vh + 30vw)", backgroundColor: "#00B706", zIndex: 3, right: "calc(-10vh - 10vw)", bottom: "calc(-20vh - 20vw)"}}/>
+            <Circle style={{height: "calc(20vh + 20vw)", width: "calc(20vh + 20vw)", backgroundColor: "#00A806", zIndex: 2, right: "calc(3vh + 3vw)", bottom: "calc(-12vh - 12vw)"}}/>
             {currentWeather}
         </div>
     );

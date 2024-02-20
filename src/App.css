@@ -227,7 +227,6 @@ body{
 #pivot{
   height: fit-content;
   width: fit-content;
-  z-index: 9999;
   position: absolute;
   display: flex;
 }

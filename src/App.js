@@ -11,9 +11,9 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <DayInfo width="fit-content" data={weatherData} opacity="0"/>
-      <WeatherVisualizer data={weatherData} />
-      <div style={{display: "none"}} id='cur_weather'>{weatherData.weather && weatherData.weather[0]?.main}</div>
+      <DayInfo width="fit-content" data={weatherData == 'debug' ? {"name" : "Test City"} : weatherData} opacity="0"/>
+      <WeatherVisualizer data={weatherData == 'debug' ? {'weather' : 'debug'} : weatherData} />
+      <div style={{display: "none"}} id='cur_weather'>{weatherData == 'debug' ? 'debug' : weatherData.weather && weatherData.weather[0]?.main}</div>
     </div>
   );
 }
