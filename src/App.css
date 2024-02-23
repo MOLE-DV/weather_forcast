@@ -1,4 +1,6 @@
 
+*{box-sizing: border-box; margin: 0;}
+
 :root{
   --sky: rgba(83, 184, 252, 0.842);
   --searchBar-hidden-width: calc(10vh + 10vw);
@@ -10,6 +12,8 @@
 }
 
 body{
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -18,12 +22,14 @@ body{
   color: white;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 #header{
   position: absolute;
-  width: calc(100vw - 2 * calc(.5vh + .5vw));
-  height: 50px;
+  width: 90vw;
+  height: calc(2vh + 2vw);
   position: fixed;
   display: flex;
   align-items: center;
@@ -41,7 +47,7 @@ body{
   margin-left: auto;
   margin-right: auto;
   width: var(--searchBar-hidden-width);
-  height: calc(1.3vh + 1.3vw);
+  height: 80%;
   padding-inline: 10px;
   transition: .25s;
   outline: none;
@@ -68,7 +74,7 @@ body{
   background: none;
   color: rgba(255, 255, 255, 0.712);
   letter-spacing: calc(.01vh + .01vw);
-  font-size: calc(.7vh + .7vw);
+  font-size: calc(.6vh + .6vw);
   transition: .25s;
 }
 
@@ -111,28 +117,6 @@ body{
   opacity: 1;
 }
 
-
-
-
-
-
-
-
-#header #menu{
-  width: calc(1vh + 1vw);
-  height: calc(1vh + 1vw);
-  background-image: var(--menu-icon);
-  background-position: center;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  opacity: var(--window-opacity);
-  transition: .25s;
-}
-
-#header #menu:hover{
-  opacity: 1;
-}
 
 
 
@@ -216,6 +200,11 @@ body{
   justify-content: center;
   align-items: center;
   animation: 1s sunRise forwards;
+  height: calc(9vh + 9vw);
+  width: calc(9vh + 9vw);
+  position: absolute;
+  right: 10vw;
+  top: 13vh;
 }
 
 .sun h1{
@@ -310,4 +299,9 @@ body{
   to{
     top: 100vh;
   }
+}
+
+
+@media screen and (max) {
+  
 }

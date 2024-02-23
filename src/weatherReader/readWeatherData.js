@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 let API_KEY = process.env.REACT_APP_TOKEN;
-console.log(API_KEY);
 
 function getCity() {
   const cityName = localStorage.getItem('cityName');

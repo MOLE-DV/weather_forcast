@@ -26,7 +26,7 @@ function Sun(props){
     }
 
     return (
-        <div className="sun" style={{height: "calc(9vh + 9vw)", width: "calc(9vh + 9vw)", right: "calc(13vh + 13vw)", top:"calc(9vh + 9vw)"}}>
+        <div className="sun" >
             <h1>{props.degrees}</h1>
             {sunRays.slice(0, sunRays.length/2)}
         </div>
