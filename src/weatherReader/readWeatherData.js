@@ -19,6 +19,7 @@ function useWeatherData() {
     const fetchData = async () => {
       try {
         const res = await axios.get(apiUrl);
+        console.log(res.data);
         setData(res.data);
       } catch (error) {
         console.error("Error fetching weather data: ", error);

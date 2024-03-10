@@ -28,7 +28,7 @@ function Sun(props){
     return (
         <div className="sun" >
             <h1>{props.degrees}</h1>
-            {sunRays.slice(0, sunRays.length/2)}
+            {sunRays.slice(0, sunRays.length)}
         </div>
     );
 
@@ -127,7 +127,7 @@ function WeatherVisualizer(props){
         
     }
 
-    console.log(currentWeather);
+    console.log('Weather: ' + currentWeather);
 
     return (
         <div id="weatherVisualizer">
