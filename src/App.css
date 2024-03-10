@@ -1,6 +1,7 @@
 
 *{box-sizing: border-box; margin: 0;}
 
+
 :root{
   --sky: rgba(83, 184, 252, 0.842);
   --searchBar-hidden-width: calc(10vh + 10vw);
@@ -39,6 +40,7 @@ body{
   border-radius: calc(1vh + 1vw);
   background-color: rgb(0, 0, 0, var(--window-opacity));
   margin: calc(.5vh + .5vw);
+  z-index: 9999;
 }
 
 #searchBar {
@@ -55,6 +57,7 @@ body{
   outline: none;
   display: flex;
   align-items: center;
+  z-index: 999;
 }
 
 #searchBar #srch_underline{
