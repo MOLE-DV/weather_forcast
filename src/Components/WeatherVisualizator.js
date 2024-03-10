@@ -2,7 +2,7 @@ import React from "react";
 
 function Circle(props){
     return (
-            <div className={props.className} style={props.style}></div>
+            <div className="circle" style={props.style}></div>
         );
 }
 
@@ -26,7 +26,7 @@ function Sun(props){
     }
 
     return (
-        <div className="sun" >
+        <div className="sun" style={{height: "calc(9vh + 9vw)", width: "calc(9vh + 9vw)", right: "calc(13vh + 13vw)", top:"calc(9vh + 9vw)"}}>
             <h1>{props.degrees}</h1>
             {sunRays.slice(0, sunRays.length)}
         </div>
@@ -50,9 +50,9 @@ function Cloud(props){
     return(
         <div className="cloud" id="goLeft">
             <Box height={`calc(${props.scale} * calc(2.5vh + 2.5vw))`} width={`calc(${props.scale} * calc(10vh + 10vw))`} color={props.color} x={`calc(${props.x} * ${props.scale})`} y={`calc(${props.y} * ${props.scale})`} renderQueue="2"/>
-            <Circle className='circle' style={{height: `calc(${props.scale} * calc(5vh + 5vw))`, width: `calc(${props.scale} * calc(5vh + 5vw))`, backgroundColor: props.color, left: `calc((${props.x} - calc(2.5vh + 2.5vw)) * ${props.scale})`, top: `calc((${props.y} - calc(2.5vh + 2.5vw)) * ${props.scale})`, zIndex: 2}} />
-            <Circle className='circle' style={{height: `calc(${props.scale} * calc(8vh + 8vw))`, width: `calc(${props.scale} * calc(8vh + 8vw))`, backgroundColor: props.color, left: `calc((${props.x} + calc(1vh + 1vw)) * ${props.scale})`, top: `calc((${props.y} - calc(5.5vh + 5.5vw)) * ${props.scale})`, zIndex: 2}}/>
-            <Circle className='circle' style={{height: `calc(${props.scale} * calc(5vh + 5vw))`, width: `calc(${props.scale} * calc(5vh + 5vw))`, backgroundColor: props.color, left: `calc((${props.x} + calc(7.5vh + 7.5vw)) * ${props.scale})`, top: `calc((${props.y} - calc(2.5vh + 2.5vw)) * ${props.scale})`, zIndex: 2}}/>
+            <Circle style={{height: `calc(${props.scale} * calc(5vh + 5vw))`, width: `calc(${props.scale} * calc(5vh + 5vw))`, backgroundColor: props.color, left: `calc((${props.x} - calc(2.5vh + 2.5vw)) * ${props.scale})`, top: `calc((${props.y} - calc(2.5vh + 2.5vw)) * ${props.scale})`, zIndex: 2}} />
+            <Circle style={{height: `calc(${props.scale} * calc(8vh + 8vw))`, width: `calc(${props.scale} * calc(8vh + 8vw))`, backgroundColor: props.color, left: `calc((${props.x} + calc(1vh + 1vw)) * ${props.scale})`, top: `calc((${props.y} - calc(5.5vh + 5.5vw)) * ${props.scale})`, zIndex: 2}}/>
+            <Circle style={{height: `calc(${props.scale} * calc(5vh + 5vw))`, width: `calc(${props.scale} * calc(5vh + 5vw))`, backgroundColor: props.color, left: `calc((${props.x} + calc(7.5vh + 7.5vw)) * ${props.scale})`, top: `calc((${props.y} - calc(2.5vh + 2.5vw)) * ${props.scale})`, zIndex: 2}}/>
             {IsRaining}
         </div>
     );
@@ -131,8 +131,8 @@ function WeatherVisualizer(props){
 
     return (
         <div id="weatherVisualizer">
-            <Circle className='grnd one'/>
-            <Circle className='grnd two'/>
+            <Circle style={{height: "calc(30vh + 30vw)", width: "calc(30vh + 30vw)", backgroundColor: "#00B706", zIndex: 3, right: "calc(-10vh - 10vw)", bottom: "calc(-20vh - 20vw)"}}/>
+            <Circle style={{height: "calc(20vh + 20vw)", width: "calc(20vh + 20vw)", backgroundColor: "#00A806", zIndex: 2, right: "calc(3vh + 3vw)", bottom: "calc(-12vh - 12vw)"}}/>
             {currentWeather}
         </div>
     );
