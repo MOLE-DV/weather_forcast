@@ -1,4 +1,5 @@
 import Underline from "./Underline";
+import cities from '../cities.json';
 
 function SearchButton(){
     return (
@@ -15,6 +16,17 @@ async function sleep(s){
 
 window.onload = ()=>{
     document.getElementById("input").addEventListener('keypress', async (e)=>{
+        let hm = 0, cm = 0;
+        let input  = document.getElementById("input").value;
+        cities.forEach((city) =>{
+            input.split('').forEach((letter) =>{
+                console.log(city.name.split('').find((l)=>{
+                    return l == letter;
+                }));
+            })
+            console.log(`Highest ${hm}, Current ${cm}`);
+            if(cm > hm) hm = cm;
+        })
         if(e.keyCode === 13){
             localStorage.setItem("cityName", document.getElementById("input").value);
             let weather = document.getElementById("cur_weather").innerText;
@@ -32,6 +44,9 @@ window.onload = ()=>{
         }
     });
 }
+
+
+
 
 function cloudsGoRight(){
     document.querySelectorAll('.cloud').forEach((e)=>{
