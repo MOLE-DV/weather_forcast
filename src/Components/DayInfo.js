@@ -38,7 +38,7 @@ function DayInfo(props){
 
     return(
         <div id="dayInfo" className="infoWindow" style={{width: props.width, height: props.height, left: props.positionX, backgroundColor: `rgba(0, 0, 0, ${props.opacity})`}}>
-            <h1 className="infoTitle" >{props.data.name == undefined ? "No City Found" : props.data.name}</h1>
+            <h1 className="infoTitle" >{props.data.name == undefined ? "No City Found" : `${props.data.name}, ${props.data.sys.country}`}</h1>
             {infoStack.slice(0,infoStack.length/4)}
         </div>
     );
