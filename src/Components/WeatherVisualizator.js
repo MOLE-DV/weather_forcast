@@ -127,8 +127,6 @@ function WeatherVisualizer(props){
         
     }
 
-    console.log('Weather: ' + currentWeather);
-
     return (
         <div id="weatherVisualizer">
             <Circle style={{height: "calc(30vh + 30vw)", width: "calc(30vh + 30vw)", backgroundColor: "#00B706", zIndex: 3, right: "calc(-10vh - 10vw)", bottom: "calc(-20vh - 20vw)"}}/>

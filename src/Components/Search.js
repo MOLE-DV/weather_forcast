@@ -15,7 +15,7 @@ async function sleep(s){
 
 window.onload = ()=>{
     document.getElementById("input").addEventListener('keypress', async (e)=>{
-        if(e.keyCode === 13){
+        if(e.key === "Enter"){
             localStorage.setItem("cityName", document.getElementById("input").value);
             let weather = document.getElementById("cur_weather").innerText;
             switch(weather){
