@@ -1,5 +1,6 @@
 import Underline from "./Underline";
 import React, { useState } from "react";
+import codes from '../countries.json';
 
 function Info(props){
     return(
@@ -28,8 +29,8 @@ function DayInfo(props){
         let set_hours = new Date(props.data.sys.sunset * 1000).getHours()
         let set_minutes = new Date(props.data.sys.sunset * 1000).getMinutes()  
 
-        addToStack(`Sunrise ${rise_hours < 10 ? "0" + rise_hours : rise_hours} : ${rise_minutes < 10 ? "0" + rise_minutes : rise_minutes} `)
-        addToStack(`Sunset ${set_hours < 10 ? "0" + set_hours : set_hours} : ${set_minutes < 10 ? "0" + set_minutes : set_minutes} `)
+        addToStack(`☀️Sunrise ${rise_hours < 10 ? "0" + rise_hours : rise_hours} : ${rise_minutes < 10 ? "0" + rise_minutes : rise_minutes} `)
+        addToStack(`🌚Sunset ${set_hours < 10 ? "0" + set_hours : set_hours} : ${set_minutes < 10 ? "0" + set_minutes : set_minutes} `)
 
         addToStack(`Weather: ${props.data.weather[0].main}`);
     }catch(error){
@@ -38,7 +39,10 @@ function DayInfo(props){
 
     return(
         <div id="dayInfo" className="infoWindow" style={{width: props.width, height: props.height, left: props.positionX, backgroundColor: `rgba(0, 0, 0, ${props.opacity})`}}>
-            <h1 className="infoTitle" >{props.data.name == undefined ? "No City Found" : props.data.name}</h1>
+            <h1 className="infoTitle" >{
+            props.data.name == undefined ? `"${localStorage.getItem('cityName')}" doesn't exist` 
+            : `${props.data.name}, ${codes[props.data.sys.country]}`
+            }</h1>
             {infoStack.slice(0,infoStack.length)}
         </div>
     );
