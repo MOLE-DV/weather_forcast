@@ -29,103 +29,114 @@ body{
   position: relative;
 }
 
-#header{
-  position: absolute;
-  width: calc(100vw - 2 * calc(.5vh + .5vw));
-  height: calc(2vh + 2vw);
-  position: fixed;
-  display: flex;
-  align-items: center;
-  padding-left: 2vw;
-  border-radius: calc(1vh + 1vw);
-  background-color: rgb(0, 0, 0, var(--window-opacity));
-  margin: calc(.5vh + .5vw);
-  z-index: 9999;
-}
 
-#searchBar {
-  border: calc(.05vh + .05vw) solid rgba(180, 173, 173, 0);
+#header{
+  overflow: hidden;
+  width: calc(15vh + 15vw);
   position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: var(--searchBar-hidden-width);
-  height: 80%;
-  padding-inline: 10px;
-  transition: .25s;
-  outline: none;
-  display: flex;
-  align-items: center;
-  z-index: 999;
+  border-radius: calc(1vh + 1vw) calc(1vh + 1vw) calc(1vh + 1vw) calc(1vh + 1vw);
+  top: 1vh;
+  min-height: calc(2vh + 2vw);
+  background-color: rgba(0, 0, 0, var(--window-opacity));
+  z-index: 9999;
+  animation: .5s popIn forwards;
 }
 
-#searchBar #srch_underline{
-  position: absolute;
-  width: calc(var(--searchBar-hidden-width) - calc(.45vh + .45vw));
-  left: calc(.45vh + .45vw);
-  background-color: white;
-  height: calc(.05vh + .05vw);
-  bottom: 0;
-  transition: .25s;
-  opacity: 0;
-}
-
-#searchBar #input {
+#searchBar{
   height: 100%;
-  width: 90%;
-  outline: none;
-  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#searchBar #top{
+  height: calc(2vh + 2vw);
+  display: flex;
+
+}
+
+#searchBar #input{
+  font-family:Arial, Helvetica, sans-serif;
+  height: 100%;
   background: none;
-  color: rgba(255, 255, 255, 0.712);
-  letter-spacing: calc(.01vh + .01vw);
-  font-size: calc(.6vh + .6vw);
-  transition: .25s;
-}
-
-#searchBar #input::placeholder{
-  color: rgba(255, 255, 255, 0.473);
-}
-
-#searchBar #input:hover ~ #srch_underline{
-  opacity: var(--window-opacity);
-}
-
-#searchBar:focus-within{
-  width: var(--searchBar-visible-width);
-}
-
-#searchBar:focus-within > #srch_underline{
-  opacity: --window-opacity;
-  width: calc(var(--searchBar-visible-width) - calc(.45vh + .45vw));;
-}
-
-#searchBar:focus-within > #input{
-  color: white;
+  border: none;
+  text-decoration: none;
+  width: 80%;
+  color:  rgba(255, 255, 255, 0.651);
+  font-size: calc(.8vh + .8vw);
 }
 
 #srchButton{
+  width: calc(2vh + 2vw);
+  height: calc(2vh + 2vw);
+  background-image: url('../public/icons/search.png');
+  background-size: 40%;
   cursor: pointer;
-  background: var(--search-icon);
-  background-size: 80%;
-  background-repeat: no-repeat;
   background-position: center;
-  opacity: var(--window-opacity);
-  height: calc(.95vh + .95vw);
-  width: calc(.95vh + .95vw);
-  position: absolute;
-  right: 0;
-  transition: .25s;
+  background-repeat: no-repeat;
+  transition: .1s;
 }
 
 #srchButton:hover{
-  opacity: 1;
+  background-color: rgb(0, 0, 0);
+  filter: invert(1);
+}
+
+#searchBar #hints{
+  width: 100%;
+  height: fit-content;
+  top: calc(2vh + 2vw);
+  display: flex;
+  flex-direction: column;
+}
+
+#searchBar #hints .hint{
+  width: 100%;
+  height: calc(1.5vh + 1.5vw);
+  font-size: calc(.7vh + .7vw);
+  display: flex;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  padding-left: calc(.7vh + .7vw);
+}
+
+#searchBar #hints .hint:hover{
+  background-color: white;
+  color: black;
 }
 
 
 
+#searchBar #input:focus{
+  outline: none;
+  color: white;
+}
 
 
+#searchBar #input::placeholder{
+  color:  rgba(255, 255, 255, 0.651);
+}
+
+
+#srch_underline{
+  position: absolute;
+  width: 63.8%;
+  height: calc(.05vh + .05vw);
+  background-color: rgb(255, 255, 255);
+  opacity: 0;
+  top: calc(1.7vh + 1.7vw);
+  transition: .1s;
+}
+
+#header:hover #srch_underline{
+  opacity: 1;
+}
 
 
 .infoWindow{
