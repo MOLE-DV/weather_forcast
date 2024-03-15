@@ -104,12 +104,22 @@ body{
   cursor: pointer;
   user-select: none;
   padding-left: calc(.7vh + .7vw);
+  background: none;
+  border: none;
+  color: white;
+}
+
+#searchBar #hints .hint:focus{
+  background-color: white;
+  color: black;
+  outline: none;
 }
 
 #searchBar #hints .hint:hover{
   background-color: white;
   color: black;
 }
+
 
 
 

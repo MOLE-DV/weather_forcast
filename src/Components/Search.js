@@ -48,7 +48,7 @@ window.onload = ()=>{
 
         document.getElementById('hints').innerHTML = '';
         for(let i = 0; i < 10; i++){
-            if(matches[i] != undefined) hints.push(`<div class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</div>`);
+            if(matches[i] != undefined) hints.push(`<button class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</button>`);
         }
 
         document.getElementById('hints').innerHTML = hints.join(' ');
