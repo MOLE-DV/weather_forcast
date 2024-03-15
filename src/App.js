@@ -5,6 +5,8 @@ import useWeatherData from './weatherReader/readWeatherData';
 import React, { useState, useEffect } from 'react';
 import WeatherVisualizer from './Components/WeatherVisualizator';
 import axios from 'axios';
+import Copy from './Components/Copy';
+import Copyright from './Components/Copyright';
 
 function App() {
   const [data, setData] = useState({});
@@ -31,7 +33,9 @@ function App() {
       <DayInfo width="fit-content" data={data == 'debug' ? {"name" : "Test City"} : data} opacity="0"/>
       <WeatherVisualizer data={data == 'debug' ? {'weather' : 'debug'} : data} />
       <div style={{display: "none"}} id='cur_weather'>{data == 'debug' ? 'debug' : data.weather && data.weather[0]?.main}</div>
+      <Copy />
     </div>
+
   );
 }
 

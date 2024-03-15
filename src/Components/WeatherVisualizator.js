@@ -1,10 +1,5 @@
 import React from "react";
-
-function Circle(props){
-    return (
-            <div className="circle" style={props.style}></div>
-        );
-}
+import Circle from "./Circle";
 
 function Box(props){
     return (

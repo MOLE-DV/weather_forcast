@@ -1,0 +1,30 @@
+@import url(root.css);
+
+#cop_info{
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(var(--sky), rgba(50, 172, 253, 0.842));
+}
+
+#information{
+    padding: calc(2vh + 2vw);
+    color: white;
+    height: fit-content;
+    width: fit-content;
+    text-shadow: calc(.05vh + .05vw) calc(.05vh + .05vw) 0 black;
+}
+
+#button{
+    text-decoration: none;
+    color: white;
+    text-shadow: none;
+    background-color: white;
+    color: black;
+    padding: calc(.5vh + .5vw);
+    border-radius: calc(1vh + 1vw);
+    transition: .1s;
+}
+
+#button:hover{
+    filter: invert(1);
+}

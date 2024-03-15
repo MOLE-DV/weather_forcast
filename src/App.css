@@ -1,18 +1,10 @@
+@import url(root.css);
+
 
 *{box-sizing: border-box; margin: 0;}
 
 
-:root{
-  --sky: rgba(83, 184, 252, 0.842);
-  --searchBar-hidden-width: calc(10vh + 10vw);
-  --searchBar-visible-width: calc(15vh + 15vw);
-  --sea-background:url('../public//background/sea.jpg');
-  --window-opacity: .7;
-  --search-icon: url('../public/icons/search.png');
-  --menu-icon: url('../public/icons/menu.png');
-  --big-ground-size: calc(25vh + 25vw);
-  --small-ground-size: calc(15vh + 15vw);
-}
+
 
 body{
   width: 100vw;
@@ -386,4 +378,16 @@ body{
   .grnd.two{
     display: none;
   }
+}
+
+
+#copyright{
+  position: absolute;
+  z-index: 9999;
+  font-size: calc(.5vh + .5vw);
+  cursor: pointer;
+  bottom: calc(.1vh + .1vw);
+  right: calc(.1vh + .1vw);
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.514);
 }

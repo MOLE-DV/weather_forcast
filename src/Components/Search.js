@@ -30,53 +30,56 @@ function SearchHints(props){
 
 window.onload = ()=>{
     if(localStorage.getItem('cityName') === null || localStorage.getItem('cityName') === undefined) {localStorage.setItem('cityName', 'Rome,it'); window.location.reload();};
-    document.getElementById("input").addEventListener('keyup', async (e)=>{
+    
+    if(document.getElementById("input") != undefined){
+        document.getElementById("input").addEventListener('keyup', async (e)=>{
        
-        let input = document.getElementById("input").value;
-        let matches = [];
-
-
-        if(input != ""){
-            cities.forEach((city)=>{
-                if(city.name.toLowerCase().search(input.toLowerCase()) == 0){
-                    matches.push([city.name, city.country]);
-                }
-            })
-        }
-
-        let hints = []
-
-        document.getElementById('hints').innerHTML = '';
-        for(let i = 0; i < 10; i++){
-            if(matches[i] != undefined) hints.push(`<button class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</button>`);
-        }
-
-        document.getElementById('hints').innerHTML = hints.join(' ');
-
-        if(e.keyCode === 13){
-            let country_code = '';
-            Object.keys(countries).forEach((country) => {
-                if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
-                    input = input.toLowerCase().replace(countries[country].toLowerCase(), '').trim();
-                    country_code = ', ' + country
-                }
-            })
-
-            localStorage.setItem("cityName", input + '' + country_code);
-            let weather = document.getElementById("cur_weather").innerText;
-            switch(weather){
-                case "Clouds":
-                    cloudsGoRight();
-                    break;
-                case "Rain":
-                    cloudsGoRight();
-                    break;
-                default: window.location.reload(); break;
+            let input = document.getElementById("input").value;
+            let matches = [];
+    
+    
+            if(input != ""){
+                cities.forEach((city)=>{
+                    if(city.name.toLowerCase().search(input.toLowerCase()) == 0){
+                        matches.push([city.name, city.country]);
+                    }
+                })
             }
-            await sleep(.5);
-            window.location.reload();
-        }
-    });
+    
+            let hints = []
+    
+            document.getElementById('hints').innerHTML = '';
+            for(let i = 0; i < 10; i++){
+                if(matches[i] != undefined) hints.push(`<button class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</button>`);
+            }
+    
+            document.getElementById('hints').innerHTML = hints.join(' ');
+    
+            if(e.keyCode === 13){
+                let country_code = '';
+                Object.keys(countries).forEach((country) => {
+                    if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
+                        input = input.toLowerCase().replace(countries[country].toLowerCase(), '').trim();
+                        country_code = ', ' + country
+                    }
+                })
+    
+                localStorage.setItem("cityName", input + '' + country_code);
+                let weather = document.getElementById("cur_weather").innerText;
+                switch(weather){
+                    case "Clouds":
+                        cloudsGoRight();
+                        break;
+                    case "Rain":
+                        cloudsGoRight();
+                        break;
+                    default: window.location.reload(); break;
+                }
+                await sleep(.5);
+                window.location.reload();
+            }
+        });
+    }
 }
 
 

@@ -1,0 +1,11 @@
+:root{
+  --sky: rgba(83, 184, 252, 0.842);
+  --searchBar-hidden-width: calc(10vh + 10vw);
+  --searchBar-visible-width: calc(15vh + 15vw);
+  --sea-background:url('../public//background/sea.jpg');
+  --window-opacity: .7;
+  --search-icon: url('../public/icons/search.png');
+  --menu-icon: url('../public/icons/menu.png');
+  --big-ground-size: calc(25vh + 25vw);
+  --small-ground-size: calc(15vh + 15vw);
+}
