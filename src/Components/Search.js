@@ -1,7 +1,6 @@
 import Underline from "./Underline";
 import cities from '../cities.json';
 import countries from '../countries.json';
-import { unhover } from "@testing-library/user-event/dist/hover";
 
 
 async function sleep(s){
@@ -48,14 +47,23 @@ window.onload = ()=>{
         let hints = []
 
         document.getElementById('hints').innerHTML = '';
-        for(let i = 0; i < 5; i++){
+        for(let i = 0; i < 10; i++){
             if(matches[i] != undefined) hints.push(`<div class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</div>`);
         }
 
         document.getElementById('hints').innerHTML = hints.join(' ');
 
         if(e.keyCode === 13){
-            localStorage.setItem("cityName", document.getElementById("input").value);
+            let country_code = '';
+            Object.keys(countries).forEach((country) => {
+                if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
+                    input = input.toLowerCase().replace(countries[country].toLowerCase(), '').trim();
+                    country_code = ', ' + country
+                }
+            })
+
+            alert(input + '' + country_code);
+            localStorage.setItem("cityName", input + '' + country_code);
             let weather = document.getElementById("cur_weather").innerText;
             switch(weather){
                 case "Clouds":
