@@ -221,8 +221,8 @@ body{
   height: calc(9vh + 9vw);
   width: calc(9vh + 9vw);
   position: absolute;
-  right: 10vw;
-  top: 13vh;
+  right: calc(13vh + 13vw);
+  top: calc(9vh + 9vw);
 }
 
 .sun h1{
@@ -391,3 +391,16 @@ body{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.514);
 }
+
+@media screen and (max-width: 900px) {
+  .sun{
+    left: 0;
+    right: 0;
+    top: calc(15vh + 15vw);
+    height: calc(12vh + 12vw);
+    width: calc(12vh + 12vw);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+

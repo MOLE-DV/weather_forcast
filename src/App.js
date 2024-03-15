@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Header from './Components/Header';
 import DayInfo from './Components/DayInfo';
 import useWeatherData from './weatherReader/readWeatherData';
