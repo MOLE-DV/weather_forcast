@@ -12,7 +12,7 @@ function Copyright(){
               <a href="https://openweathermap.org/api" target="blank_">OpenWeatherApi</a> was used to create this project
               <br />
               <br />
-              <Link to='/Home' id="button">Go Back</Link>
+              <Link to='/' id="button">Go Back</Link>
             </div>
 
             <Circle style={{height: "calc(30vh + 30vw)", width: "calc(30vh + 30vw)", backgroundColor: "#00B706", zIndex: 3, right: "calc(-10vh - 10vw)", bottom: "calc(-20vh - 20vw)"}}/>
