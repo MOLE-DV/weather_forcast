@@ -5,7 +5,7 @@ let API_KEY = process.env.REACT_APP_TOKEN;
 
 function getCity() {
   const cityName = localStorage.getItem('cityName');
-  if (cityName === null || cityName === undefined) {  localStorage.setItem('cityName', 'Rome, IT'); return null; };
+  if (cityName === null || cityName === undefined) {  localStorage.setItem('cityName', 'Rome, IT'); return 'Rome, IT'; };
   if(cityName == "debug") {return 'debug'}
 
   return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;

@@ -1,6 +1,7 @@
 import Underline from "./Underline";
 import cities from '../cities.json';
 import countries from '../countries.json';
+import { unhover } from "@testing-library/user-event/dist/hover";
 
 
 async function sleep(s){
@@ -29,6 +30,7 @@ function SearchHints(props){
 
 
 window.onload = ()=>{
+    if(localStorage.getItem('cityName') === null || localStorage.getItem('cityName') === undefined) {localStorage.setItem('cityName', 'Rome,it'); window.location.reload();};
     document.getElementById("input").addEventListener('keyup', async (e)=>{
        
         let input = document.getElementById("input").value;
