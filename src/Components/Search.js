@@ -62,7 +62,6 @@ window.onload = ()=>{
                 }
             })
 
-            alert(input + '' + country_code);
             localStorage.setItem("cityName", input + '' + country_code);
             let weather = document.getElementById("cur_weather").innerText;
             switch(weather){
