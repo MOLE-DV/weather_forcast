@@ -1,6 +1,6 @@
 function Circle(props){
     return (
-            <div className="circle" style={props.style}></div>
+            <div id="circle" className={props.className} style={props.style}></div>
         );
 }
 

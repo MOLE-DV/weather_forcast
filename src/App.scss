@@ -201,16 +201,12 @@ body{
 
 
 
-.circle, .sun, .box{
+#circle, .sun, .box{
   position: absolute;
   border-radius: 50%;
 }
 
-.box{border-radius: 0;}
 
-.circle{
-  background-color: red;
-}
 
 .sun{
   background-color: yellow;
@@ -247,6 +243,69 @@ body{
   animation: 1s goUp forwards;
 }
 
+
+
+//Clouds
+
+$cloudsSettings: (
+  oneScale : 1,
+  twoScale : .7,
+  threeScale : 1,
+  fourScale : 1,
+  fiveScale : 1,
+);
+
+.cloud{
+  position: absolute;
+  filter: drop-shadow(0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.247));
+}
+
+.cloudCircle, .box{background-color: white;}
+
+
+.box{
+  width: calc(6.75vh + 6.75vw);
+  height: calc(.65vh + .65vw);
+  margin-left: calc(2vh + 2vw);
+  margin-top: calc(3.35vh + 3.35vw);
+  border-radius: 0;
+}
+
+.cloudCircle.one, .cloudCircle.three{
+  width: calc(4vh + 4vw);
+  height: calc(4vh + 4vw);
+}
+
+.cloudCircle.three{
+  margin-left: calc(6.75vh + 6.75vw);
+}
+
+.cloudCircle.two{
+  height: calc(6.25vh + 6.25vw);
+  width: calc(6.25vh + 6.25vw);
+  margin-left: calc(2.25vh + 2.25vw);
+  margin-top: calc(-2.25vh - 2.25vw);
+}
+
+
+//Clouds positions
+
+.cloud.one{
+  right: calc(17vh + 17vw);
+  top:calc(15vh + 15vw);
+  scale: map-get($map: $cloudsSettings, $key: oneScale);
+}
+
+.cloud.two{
+  top: calc(8vh + 8vw);
+  right: calc(27vh + 27vw);
+  scale: map-get($map: $cloudsSettings, $key: twoScale);
+}
+
+
+
+
+
 @keyframes sunRise {
   from{
     top: 100vh;
@@ -259,28 +318,26 @@ body{
   }
 }
 
-.cloud{
-  filter: drop-shadow(0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.247));
-}
 
 
-#goLeft *{
+
+#goLeft{
   animation: 2s forwards goLeft;
 }
 
-#goRight *{
+#goRight{
   animation: 2s forwards goRight;
 }
 
 @keyframes goLeft {
   from{
-    left: 200vw;
+    right: -100vw;
   }
 }
 
 @keyframes goRight {
   to{
-    left: 200vw;
+    right: -100vw;
   }
 }
 
@@ -339,7 +396,7 @@ body{
   bottom: 0;
 }
 
-.grnd.one{
+.ground.one{
   height: var(--big-ground-size);
   width: var(--big-ground-size);
   bottom: calc((var(--big-ground-size) / 2 ) * -1.2);
@@ -347,7 +404,7 @@ body{
   background-color: #49a82f;
 }
 
-.grnd.two{
+.ground.two{
   height: var(--small-ground-size);
   width: var(--small-ground-size);
   bottom: calc((var(--small-ground-size) / 2 ) * -1.2);

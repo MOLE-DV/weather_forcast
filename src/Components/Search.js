@@ -37,6 +37,8 @@ window.onload = ()=>{
             let input = document.getElementById("input").value;
             let matches = [];
     
+
+            
     
             if(input != ""){
                 cities.forEach((city)=>{
@@ -57,12 +59,18 @@ window.onload = ()=>{
     
             if(e.keyCode === 13){
                 let country_code = '';
-                Object.keys(countries).forEach((country) => {
-                    if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
-                        input = input.toLowerCase().replace(countries[country].toLowerCase(), '').trim();
-                        country_code = ', ' + country
-                    }
-                })
+
+                switch(input != 'debug_weather'){
+                    case true:
+                        Object.keys(countries).forEach((country) => {
+                            if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
+                                input = input.toLowerCase().replace(countries[country].toLowerCase(), '').trim();
+                                country_code = ', ' + country
+                            }
+                        })
+                        break;
+                    default: break;
+                }
     
                 localStorage.setItem("cityName", input + '' + country_code);
                 let weather = document.getElementById("cur_weather").innerText;
