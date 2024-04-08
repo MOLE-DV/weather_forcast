@@ -1,36 +1,39 @@
 import './App.scss';
 import Header from './Components/Header';
 import DayInfo from './Components/DayInfo';
-import useWeatherData from './weatherReader/readWeatherData';
+import ReadWeatherData from './weatherReader/ReadWeatherData';
 import React, { useState, useEffect } from 'react';
 import WeatherVisualizer from './Components/WeatherVisualizator';
 import axios from 'axios';
 import Copy from './Components/Copy';
-import Copyright from './Components/Copyright';
+
+
+
 
 function App() {
-  const [data, setData] = useState({});
-  const apiUrl =  `https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('cityName')}&appid=${process.env.REACT_APP_TOKEN}`;
+  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(apiUrl);
-        setData(res.data);
-      } catch (error) {
-        console.error("Error fetching weather data: ", error);
-      }
-    };
-
-    if (apiUrl) {
-      fetchData();
+  if(data.length == 0){
+    const city = localStorage.getItem('cityName');
+    if (city) {
+      ReadWeatherData({city})
+        .then(weatherData => {
+          console.log('✅Data Recievied from reader!')
+          setData(weatherData);
+        })
+        .catch(error => {
+          console.error('❌Error receiving weather data:', error);
+        });
     }
-  }, [apiUrl]);
+  }
+
+  if(data == 'debug') console.log('⚙️Debug is on!')
+
 
   return (
     <div className="App">
       <Header/>
-      <DayInfo width="fit-content" data={data == 'debug' ? {"name" : "Test City"} : data} opacity="0"/>
+      <DayInfo width="fit-content" data={data} opacity="0"/>
       <WeatherVisualizer data={data == 'debug' ? {'weather' : 'debug'} : data} />
       <div style={{display: "none"}} id='cur_weather'>{data == 'debug' ? 'debug' : data.weather && data.weather[0]?.main}</div>
       <Copy />

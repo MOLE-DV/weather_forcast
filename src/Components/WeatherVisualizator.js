@@ -88,6 +88,7 @@ function Rainy(props){
     )
 }
  
+
 function WeatherVisualizer(props){
     let weather = props.data.weather && props.data.weather[0]?.main;
 
