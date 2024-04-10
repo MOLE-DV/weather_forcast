@@ -1,4 +1,3 @@
-import Underline from "./Underline";
 import cities from '../cities.json';
 import countries from '../countries.json';
 
@@ -18,31 +17,18 @@ function SearchButton(){
 }
 
 
-function SearchHints(props){
-    return (
-        <div className="hint">
-            {props.text}
-        </div>
-    )
-}
-
-
-
 window.onload = ()=>{
     if(localStorage.getItem('cityName') === null || localStorage.getItem('cityName') === undefined) {localStorage.setItem('cityName', 'Rome,it'); window.location.reload();};
     
-    if(document.getElementById("input") != undefined){
+    if(document.getElementById("input") !== undefined){
         document.getElementById("input").addEventListener('keyup', async (e)=>{
        
             let input = document.getElementById("input").value;
             let matches = [];
     
-
-            
-    
-            if(input != ""){
+            if(input !== ""){
                 cities.forEach((city)=>{
-                    if(city.name.toLowerCase().search(input.toLowerCase()) == 0){
+                    if(city.name.toLowerCase().search(input.toLowerCase()) === 0){
                         matches.push([city.name, city.country]);
                     }
                 })
@@ -52,7 +38,7 @@ window.onload = ()=>{
     
             document.getElementById('hints').innerHTML = '';
             for(let i = 0; i < 10; i++){
-                if(matches[i] != undefined) hints.push(`<button class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</button>`);
+                if(matches[i] !== undefined) hints.push(`<button class="hint" onClick="localStorage.setItem('cityName', '`+ matches[i][0] + `, `+ matches[i][1] +`'); window.location.reload();">` + matches[i][0] + `, `+ countries[matches[i][1]] + `</button>`);
             }
     
             document.getElementById('hints').innerHTML = hints.join(' ');
@@ -60,7 +46,7 @@ window.onload = ()=>{
             if(e.keyCode === 13){
                 let country_code = '';
 
-                switch(input != 'debug_weather'){
+                switch(input !== 'debug_weather'){
                     case true:
                         Object.keys(countries).forEach((country) => {
                             if(input.toLowerCase().includes(countries[country].toLowerCase()) === true) {
