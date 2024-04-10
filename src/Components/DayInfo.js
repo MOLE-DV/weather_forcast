@@ -17,9 +17,9 @@ function addToStack(data){
 }
 
 function DayInfo(props){
-
-    if(props.data.length > 0 && props.data != undefined && props.data != 'debug'){
+    if(props.data != undefined && props.data != '' && props.data != 'not_found' && props.data != 'debug'){
         try{
+            console.log("⚙️Displaying data...")
             switch(document.querySelectorAll('#info').length == 0){
                 case true:
                     addToStack(`Temperature ${(props.data.main.temp - 274.15 + 1).toFixed(1)} °C`);
@@ -40,9 +40,17 @@ function DayInfo(props){
                     break;
                 default: break;
             }
+
+            console.log('✅Displaying succesful!');
         }catch(error){
-            console.error(`Coulnd't read weather data, ${error}`)
+            console.error(`Coulnd't display weather data ${error}`)
         }
+    }
+
+    if(props.data == 'debug'){
+        addToStack(<button onClick={() => {localStorage.setItem('debug_weather', 'Clear'); window.location.reload();}}>Set sunny</button>)
+        addToStack(<button onClick={() => {localStorage.setItem('debug_weather', 'Clouds'); window.location.reload()}}>Set clouds</button>)
+        addToStack(<button onClick={() => {localStorage.setItem('debug_weather', 'Rain'); window.location.reload()}}>Set rain</button>)
     }
    
 

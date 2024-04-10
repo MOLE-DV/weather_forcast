@@ -155,7 +155,9 @@ body{
   padding-bottom: calc(1vh + 1vw);
   padding-left: calc(1vh + 1vw);;
   height: fit-content;
+  z-index: 999;
 }
+
 
 .infoTitle{
   font-size: calc(3vh + 3vw);
@@ -179,6 +181,8 @@ body{
   animation: 1s forwards slide-left;
 }
 
+#info button{width: 100%;}
+
 #info:hover{
   font-size: calc(2vh + 2vw);
   background-color: white;
@@ -191,11 +195,6 @@ body{
   height: calc(.1vh + .1vw);
   position: absolute;
 }
-
-
-
-
-
 
 
 
@@ -353,9 +352,11 @@ $cloudsSettings: (
 
 
 .rain{
+  width: calc(10.5vh + 10.5vw);
   position: absolute;
   height: 1vh;
-  background-color: rebeccapurple;
+  margin-top: calc(2vh + 2vw);
+  z-index: -1;
 }
 
 

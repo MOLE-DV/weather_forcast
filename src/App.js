@@ -4,7 +4,6 @@ import DayInfo from './Components/DayInfo';
 import ReadWeatherData from './weatherReader/ReadWeatherData';
 import React, { useState, useEffect } from 'react';
 import WeatherVisualizer from './Components/WeatherVisualizator';
-import axios from 'axios';
 import Copy from './Components/Copy';
 
 
@@ -12,6 +11,9 @@ import Copy from './Components/Copy';
 
 function App() {
   const [data, setData] = useState([]);
+
+
+
 
   if(data.length == 0){
     const city = localStorage.getItem('cityName');
@@ -28,7 +30,6 @@ function App() {
   }
 
   if(data == 'debug') console.log('⚙️Debug is on!')
-
 
   return (
     <div className="App">

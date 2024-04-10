@@ -81,9 +81,6 @@ function Rainy(props){
             <Sun rays="0" degrees={props.degrees}/>
             <Cloud className="cloud one" raining={true}/>
             <Cloud className="cloud two" raining={true}/>
-            <Cloud className="cloud three" raining={true}/>
-            <Cloud className="cloud four" raining={true}/>
-            <Cloud className="cloud five"raining={true}/>
         </div>
     )
 }
@@ -91,17 +88,22 @@ function Rainy(props){
 
 function WeatherVisualizer(props){
     let weather = props.data.weather && props.data.weather[0]?.main;
+    let temperature = props.data.length > 0 && props.data.main.temp != undefined ? props.data.main.temp : 0;
 
+
+    if(props.data.weather === 'debug') {
+        weather = localStorage.getItem('debug_weather')
+    };
 
     switch(weather){
         case "Clouds":
-            currentWeather = <Cloudy degrees={`${(props.data.main.temp - 274.15 + 1).toFixed(1)} °C`}/>;
+            currentWeather = <Cloudy degrees={`${(temperature - 274.15 + 1).toFixed(1)} °C`}/>;
             break;
         case "Clear":
-            currentWeather = <Sunny degrees={`${(props.data.main.temp - 274.15 + 1).toFixed(1)} °C`}/>;
+            currentWeather = <Sunny degrees={`${(temperature - 274.15 + 1).toFixed(1)} °C`}/>;
             break;
         case "Rain":
-            currentWeather = <Rainy degrees={`${(props.data.main.temp - 274.15 + 1).toFixed(1)} °C`}/>;
+            currentWeather = <Rainy degrees={`${(temperature - 274.15 + 1).toFixed(1)} °C`}/>;
             break;
         default:
             currentWeather = null;
