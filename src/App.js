@@ -4,7 +4,6 @@ import DayInfo from "./Components/DayInfo";
 import React, { useState, useEffect } from "react";
 import WeatherVisualizer from "./Components/WeatherVisualizator";
 import Copy from "./Components/Copy";
-import axios from "axios";
 
 function App() {
   const API_KEY = process.env.REACT_APP_TOKEN;
