@@ -25,7 +25,7 @@ window.onload = () => {
     localStorage.getItem("cityName") === null ||
     localStorage.getItem("cityName") === undefined
   ) {
-    localStorage.setItem("cityName", "Rome,it");
+    localStorage.setItem("cityName", "Rome italy");
     window.location.reload();
   }
 
@@ -63,41 +63,30 @@ window.onload = () => {
       document.getElementById("hints").innerHTML = hints.join(" ");
 
       if (e.keyCode === 13) {
-        let country_code = "";
+        // let country_code = "";
 
-        switch (input !== "debug_weather") {
-          case true:
-            Object.keys(countries).forEach((country) => {
-              if (
-                input
-                  .toLowerCase()
-                  .includes(countries[country].toLowerCase()) === true
-              ) {
-                input = input
-                  .toLowerCase()
-                  .replace(countries[country].toLowerCase(), "")
-                  .trim();
-                country_code = ", " + country;
-              }
-            });
-            break;
-          default:
-            break;
-        }
+        // switch (input !== "debug_city") {
+        //   case true:
+        //     Object.keys(countries).forEach((country) => {
+        //       if (
+        //         input
+        //           .toLowerCase()
+        //           .includes(countries[country].toLowerCase()) === true
+        //       ) {
+        //         input = input
+        //           .toLowerCase()
+        //           .replace(countries[country].toLowerCase(), "")
+        //           .trim();
+        //         country_code = ", " + country;
+        //       }
+        //     });
+        //     break;
+        //   default:
+        //     break;
+        // }
 
-        localStorage.setItem("cityName", input + "" + country_code);
-        let weather = document.getElementById("cur_weather").innerText;
-        switch (weather) {
-          case "Clouds":
-            cloudsGoRight();
-            break;
-          case "Rain":
-            cloudsGoRight();
-            break;
-          default:
-            window.location.reload();
-            break;
-        }
+        localStorage.setItem("cityName", input);
+        cloudsGoRight();
         await sleep(0.5);
         window.location.reload();
       }
