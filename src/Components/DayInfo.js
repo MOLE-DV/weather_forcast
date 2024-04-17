@@ -1,6 +1,4 @@
-import Underline from "./Underline";
 import React, { useState, useEffect } from "react";
-import codes from "../countries.json";
 
 function Info(props) {
   return <div id="info">{props.data}</div>;
