@@ -1,28 +1,30 @@
 @import url(root.css);
 
-
-*{box-sizing: border-box; margin: 0;}
-
-
-
-
-body{
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-.App{
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.App {
   background: radial-gradient(var(--sky), rgba(50, 172, 253, 0.842));
   color: white;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
 }
 
-
-#header{
+#header {
   overflow: hidden;
   width: calc(15vh + 15vw);
   position: absolute;
@@ -35,50 +37,49 @@ body{
   min-height: calc(2vh + 2vw);
   background-color: rgba(0, 0, 0, var(--window-opacity));
   z-index: 9999;
-  animation: .5s popIn forwards;
+  animation: 0.5s popIn forwards;
 }
 
-#searchBar{
+#searchBar {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#searchBar #top{
+#searchBar #top {
   height: calc(2vh + 2vw);
   display: flex;
-
 }
 
-#searchBar #input{
-  font-family:Arial, Helvetica, sans-serif;
+#searchBar #input {
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   background: none;
   border: none;
   text-decoration: none;
   width: 80%;
-  color:  rgba(255, 255, 255, 0.651);
-  font-size: calc(.8vh + .8vw);
+  color: rgba(255, 255, 255, 0.651);
+  font-size: calc(0.8vh + 0.8vw);
 }
 
-#srchButton{
+#srchButton {
   width: calc(2vh + 2vw);
   height: calc(2vh + 2vw);
-  background-image: url('../public/icons/search.png');
+  background-image: url("../public/icons/search.png");
   background-size: 40%;
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
-  transition: .1s;
+  transition: 0.1s;
 }
 
-#srchButton:hover{
+#srchButton:hover {
   background-color: rgb(0, 0, 0);
   filter: invert(1);
 }
 
-#searchBar #hints{
+#searchBar #hints {
   width: 100%;
   height: fit-content;
   top: calc(2vh + 2vw);
@@ -86,128 +87,119 @@ body{
   flex-direction: column;
 }
 
-#searchBar #hints .hint{
+#searchBar #hints .hint {
   width: 100%;
   height: calc(1.5vh + 1.5vw);
-  font-size: calc(.7vh + .7vw);
+  font-size: calc(0.7vh + 0.7vw);
   display: flex;
   align-items: center;
   display: flex;
   cursor: pointer;
   user-select: none;
-  padding-left: calc(.7vh + .7vw);
+  padding-left: calc(0.7vh + 0.7vw);
   background: none;
   border: none;
   color: white;
 }
 
-#searchBar #hints .hint:focus{
+#searchBar #hints .hint:focus {
   background-color: white;
   color: black;
   outline: none;
 }
 
-#searchBar #hints .hint:hover{
+#searchBar #hints .hint:hover {
   background-color: white;
   color: black;
 }
 
-
-
-
-#searchBar #input:focus{
+#searchBar #input:focus {
   outline: none;
   color: white;
 }
 
-
-#searchBar #input::placeholder{
-  color:  rgba(255, 255, 255, 0.651);
+#searchBar #input::placeholder {
+  color: rgba(255, 255, 255, 0.651);
 }
 
-
-#srch_underline{
+#srch_underline {
   position: absolute;
   width: 63.8%;
-  height: calc(.05vh + .05vw);
+  height: calc(0.05vh + 0.05vw);
   background-color: rgb(255, 255, 255);
   opacity: 0;
   top: calc(1.7vh + 1.7vw);
-  transition: .1s;
+  transition: 0.1s;
 }
 
-#header:hover #srch_underline{
+#header:hover #srch_underline {
   opacity: 1;
 }
 
-
-.infoWindow{
+.infoWindow {
   display: flex;
   flex-direction: column;
   position: absolute;
   top: calc(8vh + 8vw);
-  left: calc(.5vh + .5vw);
+  left: calc(0.5vh + 0.5vw);
   border-radius: calc(1vh + 1vw);
   display: flex;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0);
   padding-top: calc(1vh + 1vw);
   padding-bottom: calc(1vh + 1vw);
-  padding-left: calc(1vh + 1vw);;
+  padding-left: calc(1vh + 1vw);
   height: fit-content;
   z-index: 999;
 }
 
-
-.infoTitle{
+.infoTitle {
   font-size: calc(3vh + 3vw);
-  letter-spacing: calc(.1vh + .1vw);
+  letter-spacing: calc(0.1vh + 0.1vw);
   animation: 1s forwards slide-left;
 }
 
 @keyframes slide-left {
-  0%{
+  0% {
     margin-left: -100%;
   }
-  100%{
+  100% {
     margin-left: 0%;
   }
 }
 
-#info{
+#info {
   font-size: calc(1vh + 1vw);
   user-select: none;
-  transition: .1s;
+  transition: 0.1s;
   animation: 1s forwards slide-left;
 }
 
-#info button{width: 100%;}
+#info button {
+  width: 100%;
+}
 
-#info:hover{
+#info:hover {
   font-size: calc(2vh + 2vw);
   background-color: white;
   color: var(--sky);
   padding-left: 2vw;
 }
 
-#underline{
+#underline {
   background-color: white;
-  height: calc(.1vh + .1vw);
+  height: calc(0.1vh + 0.1vw);
   position: absolute;
 }
 
-
-
-
-
-#circle, .sun, .box{
+#circle,
+.sun,
+.box {
   position: absolute;
   border-radius: 50%;
 }
 
-
-
-.sun{
+.sun {
   background-color: yellow;
   display: flex;
   justify-content: center;
@@ -220,21 +212,22 @@ body{
   top: calc(9vh + 9vw);
 }
 
-.sun h1{
+.sun h1 {
   color: black;
   font-size: calc(1vh + 1vw);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#pivot{
+#pivot {
   height: fit-content;
   width: fit-content;
   position: absolute;
   display: flex;
 }
 
-.ray{
-  width: calc(.5vh + .5vw);
+.ray {
+  width: calc(0.5vh + 0.5vw);
   height: calc(1.5vh + 1.5vw);
   background-color: yellow;
   border-radius: calc(1vh + 1vw);
@@ -242,116 +235,107 @@ body{
   animation: 1s goUp forwards;
 }
 
-
-
 //Clouds
 
 $cloudsSettings: (
-  oneScale : 1,
-  twoScale : .7,
-  threeScale : 1,
-  fourScale : 1,
-  fiveScale : 1,
+  oneScale: 1,
+  twoScale: 0.7,
+  threeScale: 1,
+  fourScale: 1,
+  fiveScale: 1,
 );
 
-.cloud{
+.cloud {
   position: absolute;
-  filter: drop-shadow(0 0 calc(.1vh + .1vw) rgba(0, 0, 0, 0.247));
+  filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
 }
 
-.cloudCircle, .box{background-color: white;}
+.cloudCircle,
+.box {
+  background-color: white;
+}
 
-
-.box{
+.box {
   width: calc(6.75vh + 6.75vw);
-  height: calc(.65vh + .65vw);
+  height: calc(0.65vh + 0.65vw);
   margin-left: calc(2vh + 2vw);
   margin-top: calc(3.35vh + 3.35vw);
   border-radius: 0;
 }
 
-.cloudCircle.one, .cloudCircle.three{
+.cloudCircle.one,
+.cloudCircle.three {
   width: calc(4vh + 4vw);
   height: calc(4vh + 4vw);
 }
 
-.cloudCircle.three{
+.cloudCircle.three {
   margin-left: calc(6.75vh + 6.75vw);
 }
 
-.cloudCircle.two{
+.cloudCircle.two {
   height: calc(6.25vh + 6.25vw);
   width: calc(6.25vh + 6.25vw);
   margin-left: calc(2.25vh + 2.25vw);
   margin-top: calc(-2.25vh - 2.25vw);
 }
 
-
 //Clouds positions
 
-.cloud.one{
+.cloud.one {
   right: calc(17vh + 17vw);
-  top:calc(15vh + 15vw);
+  top: calc(15vh + 15vw);
   scale: map-get($map: $cloudsSettings, $key: oneScale);
 }
 
-.cloud.two{
+.cloud.two {
   top: calc(8vh + 8vw);
   right: calc(27vh + 27vw);
   scale: map-get($map: $cloudsSettings, $key: twoScale);
 }
 
-
-
-
-
 @keyframes sunRise {
-  from{
+  from {
     top: 100vh;
   }
 }
 
 @keyframes goUp {
-  from{
+  from {
     margin-bottom: 0;
   }
 }
 
-
-
-
-#goLeft{
+#goLeft {
   animation: 2s forwards goLeft;
 }
 
-#goRight{
+#goRight {
   animation: 2s forwards goRight;
 }
 
 @keyframes goLeft {
-  from{
+  from {
     right: -100vw;
   }
 }
 
 @keyframes goRight {
-  to{
+  to {
     right: -100vw;
   }
 }
 
 @keyframes goDark {
-  from{
+  from {
     left: 200vw;
   }
-  to{
+  to {
     background-color: rgb(150, 150, 150);
   }
 }
 
-
-
-.rain{
+.rain {
   width: calc(10.5vh + 10.5vw);
   position: absolute;
   height: 1vh;
@@ -359,99 +343,90 @@ $cloudsSettings: (
   z-index: -1;
 }
 
-
-
-.drop{
+.drop {
   background-color: rgb(0, 110, 255);
-  height: calc(.5vh + .5vw);
-  width: calc(.1vh + .1vw);
+  height: calc(0.5vh + 0.5vw);
+  width: calc(0.1vh + 0.1vw);
   position: absolute;
   border-radius: calc(1vh + 1vw);
   top: 0;
 }
 
-
 @keyframes goDown {
-  to{
+  to {
     top: 100vh;
   }
 }
 
-
-
-#weatherVisualizer{
+#weatherVisualizer {
   position: relative;
   height: 100vh;
   width: 100vw;
 }
 
-
-.grnd{
-  height: 10vh;
-  width: 10vh;
-  border-radius: 50%;
+$grass_color: rgb(28, 158, 28);
+#ground {
+  filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
+  width: 100vw;
+  height: 300vh;
+  background-color: rgb(95, 49, 35);
   position: absolute;
-  background-color: blue;
-  z-index: 999;
-  right: 0;
-  bottom: 0;
+  top: 90vh;
 }
 
-.ground.one{
-  height: var(--big-ground-size);
-  width: var(--big-ground-size);
-  bottom: calc((var(--big-ground-size) / 2 ) * -1.2);
-  right: calc((var(--big-ground-size) / 2) * -.5 );
-  background-color: #49a82f;
+#ground #grass {
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient($grass_color, $grass_color, rgba(0, 0, 0, 0));
 }
 
-.ground.two{
-  height: var(--small-ground-size);
-  width: var(--small-ground-size);
-  bottom: calc((var(--small-ground-size) / 2 ) * -1.2);
-  right: calc((var(--small-ground-size) / 2) * 1 );
-  z-index: 0;
-  background-color: #4a9635;
+$diameter1: calc(7vh + 7vw);
+#ground .ground.one {
+  width: $diameter1;
+  height: $diameter1;
+  background-color: $grass_color;
+  position: absolute;
+  top: calc(-1vh - 1vw);
+  left: calc(-2vh - 2vw);
 }
 
 @media screen and (max-width: 600px) and (min-height: 600px) {
-  .grnd.one{
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto; 
+  .grnd.one {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     height: 100vw;
     width: 100vw;
     bottom: -50vw;
   }
 
-  .sun{
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto; 
+  .sun {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     top: 25%;
   }
 
-  .grnd.two{
+  .grnd.two {
     display: none;
   }
 }
 
-
-#copyright{
+#copyright {
   position: absolute;
   z-index: 9999;
-  font-size: calc(.5vh + .5vw);
+  font-size: calc(0.3vh + 0.3vw);
   cursor: pointer;
-  bottom: calc(.1vh + .1vw);
-  right: calc(.1vh + .1vw);
+  top: calc(0.1vh + 0.1vw);
+  right: calc(0.1vh + 0.1vw);
   text-decoration: none;
   color: rgba(255, 255, 255, 0.514);
 }
 
 @media screen and (max-width: 900px) {
-  .sun{
+  .sun {
     left: 0;
     right: 0;
     top: calc(15vh + 15vw);
@@ -461,4 +436,3 @@ $cloudsSettings: (
     margin-right: auto;
   }
 }
-

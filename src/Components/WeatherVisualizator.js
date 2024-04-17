@@ -102,6 +102,15 @@ function Rainy(props) {
   );
 }
 
+function Ground(props) {
+  return (
+    <div id="ground">
+      <div id="grass"></div>
+      <Circle className="ground one" />
+    </div>
+  );
+}
+
 function WeatherVisualizer(props) {
   const [data, setData] = useState([]);
 
@@ -122,9 +131,7 @@ function WeatherVisualizer(props) {
   //TODO:Change the ground model
   return (
     <div id="weatherVisualizer">
-      <Circle className="ground one" />
-      <Circle className="ground two" />
-
+      <Ground />
       {data && data.current && weather && (
         <React.Fragment>
           {weather === "sunny" && <Sunny degrees={data.current.temp_c} />}
