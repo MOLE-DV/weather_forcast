@@ -340,7 +340,7 @@ $cloudsSettings: (
   position: absolute;
   height: 1vh;
   margin-top: calc(2vh + 2vw);
-  z-index: -1;
+  z-index: -5;
 }
 
 .drop {
@@ -350,6 +350,7 @@ $cloudsSettings: (
   position: absolute;
   border-radius: calc(1vh + 1vw);
   top: 0;
+  z-index: -5;
 }
 
 @keyframes goDown {
@@ -375,6 +376,7 @@ $ground_color: rgb(95, 49, 35);
   background: linear-gradient($ground_color, black);
   position: absolute;
   top: 90vh;
+  z-index: 5;
 }
 
 #ground #grass {
