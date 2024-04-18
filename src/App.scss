@@ -365,6 +365,7 @@ $cloudsSettings: (
 }
 
 $grass_color: rgb(28, 158, 28);
+$grass_color_background: rgb(24, 134, 24);
 #ground {
   filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
   width: 100vw;
@@ -380,14 +381,25 @@ $grass_color: rgb(28, 158, 28);
   background: linear-gradient($grass_color, $grass_color, rgba(0, 0, 0, 0));
 }
 
-$diameter1: calc(7vh + 7vw);
+$diameter1: calc(8vh + 8vw);
 #ground .ground.one {
-  width: $diameter1;
+  width: calc($diameter1 * 10);
   height: $diameter1;
   background-color: $grass_color;
   position: absolute;
   top: calc(-1vh - 1vw);
   left: calc(-2vh - 2vw);
+  border-top-right-radius: 100%;
+}
+
+#ground .ground.two {
+  width: calc($diameter1 * 10);
+  height: $diameter1;
+  background-color: $grass_color;
+  position: absolute;
+  top: calc(-1vh - 1vw);
+  left: calc(-2vh - 2vw);
+  border-top-right-radius: 100%;
 }
 
 @media screen and (max-width: 600px) and (min-height: 600px) {
