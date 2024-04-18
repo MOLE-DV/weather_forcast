@@ -372,7 +372,7 @@ $ground_color: rgb(95, 49, 35);
 #ground {
   filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
   width: 100vw;
-  height: 300vh;
+  height: 150vh;
   background: linear-gradient($ground_color, black);
   position: absolute;
   top: 90vh;
@@ -470,4 +470,69 @@ $diameter2: calc(8vh + 8vw);
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+//future forecast viewer
+
+#futureforecast {
+  z-index: 999;
+  position: absolute;
+  width: 80%;
+  height: calc(22.5vh + 22.5vw);
+  top: 150%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: calc(1vh + 1vw);
+}
+
+$top_header_height: calc(5vh + 5vw);
+
+#futureforecast #top {
+  width: 100%;
+  height: $top_header_height;
+  background-color: var(--sky);
+  display: flex;
+  align-items: center;
+  padding-inline: calc(2vh + 2vw);
+}
+
+#futureforecast #top #title {
+  text-transform: uppercase;
+  letter-spacing: calc(0.1vh + 0.1vw);
+}
+
+$forecast_width: calc(30vh + 30vw);
+$forecast_days_count: 3;
+#futureforecast #top #frcst {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  right: 0;
+  width: $forecast_width;
+  height: $top_header_height;
+}
+
+#futureforecast #top #frcst .day {
+  height: 100%;
+  min-width: calc($forecast_width / 3);
+  background-color: rgba(255, 255, 255, 0.186);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: calc(1vh + 1vw);
+}
+
+#futureforecast #top #frcst .day:hover {
+  background-color: rgb(255, 238, 52);
+  color: black;
+}
+
+#futureforecast #top #frcst .day:nth-child(1) {
+  border-radius: calc(1vh + 1vw) 0 0 calc(1vh + 1vw);
 }
