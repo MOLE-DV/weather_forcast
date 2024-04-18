@@ -365,11 +365,14 @@ $cloudsSettings: (
 }
 
 $grass_color: rgb(28, 158, 28);
+$grass_color_background: rgb(28, 149, 3);
+$ground_color: rgb(95, 49, 35);
+
 #ground {
   filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
   width: 100vw;
   height: 300vh;
-  background-color: rgb(95, 49, 35);
+  background: linear-gradient($ground_color, black);
   position: absolute;
   top: 90vh;
 }
@@ -377,17 +380,47 @@ $grass_color: rgb(28, 158, 28);
 #ground #grass {
   width: 100vw;
   height: 50vh;
-  background: linear-gradient($grass_color, $grass_color, rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    $grass_color,
+    $grass_color,
+    $grass_color,
+    rgba(255, 0, 0, 0)
+  );
+  position: absolute;
+  z-index: 1;
 }
 
-$diameter1: calc(7vh + 7vw);
+$diameter1: calc(9vh + 9vw);
+$diameter2: calc(8vh + 8vw);
+
+.ground {
+  filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.093));
+}
+
 #ground .ground.one {
-  width: $diameter1;
-  height: $diameter1;
-  background-color: $grass_color;
+  width: calc($diameter1 * 10);
+  height: calc($diameter1 * 2);
+  border-top-right-radius: 100%;
+  background: linear-gradient(
+    $grass_color,
+    $grass_color,
+    rgb(0, 90, 0),
+    rgba(0, 0, 0, 0)
+  );
   position: absolute;
-  top: calc(-1vh - 1vw);
-  left: calc(-2vh - 2vw);
+  top: calc(-3vh - 3vw);
+  left: 0;
+}
+
+#ground .ground.two {
+  width: calc($diameter2 * 10);
+  height: $diameter2;
+  border-top-left-radius: 100%;
+  background-color: $grass_color_background;
+  position: absolute;
+  top: calc(-4vh - 4vw);
+  right: 0;
+  z-index: -1;
 }
 
 @media screen and (max-width: 600px) and (min-height: 600px) {
