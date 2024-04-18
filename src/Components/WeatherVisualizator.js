@@ -105,7 +105,6 @@ function Rainy(props) {
 function Ground(props) {
   return (
     <div id="ground">
-      <div id="grass"></div>
       <div className="ground one" />
       <div className="ground two" />
     </div>

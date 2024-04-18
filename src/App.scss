@@ -340,7 +340,7 @@ $cloudsSettings: (
   position: absolute;
   height: 1vh;
   margin-top: calc(2vh + 2vw);
-  z-index: -1;
+  z-index: -5;
 }
 
 .drop {
@@ -350,6 +350,7 @@ $cloudsSettings: (
   position: absolute;
   border-radius: calc(1vh + 1vw);
   top: 0;
+  z-index: -5;
 }
 
 @keyframes goDown {
@@ -365,41 +366,63 @@ $cloudsSettings: (
 }
 
 $grass_color: rgb(28, 158, 28);
-$grass_color_background: rgb(24, 134, 24);
+$grass_color_background: rgb(28, 149, 3);
+$ground_color: rgb(95, 49, 35);
+
 #ground {
   filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
   width: 100vw;
-  height: 300vh;
-  background-color: rgb(95, 49, 35);
+  height: 150vh;
+  background: linear-gradient($ground_color, black);
   position: absolute;
   top: 90vh;
+  z-index: 5;
 }
 
 #ground #grass {
   width: 100vw;
   height: 50vh;
-  background: linear-gradient($grass_color, $grass_color, rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    $grass_color,
+    $grass_color,
+    $grass_color,
+    rgba(255, 0, 0, 0)
+  );
+  position: absolute;
+  z-index: 1;
 }
 
-$diameter1: calc(8vh + 8vw);
+$diameter1: calc(9vh + 9vw);
+$diameter2: calc(8vh + 8vw);
+
+.ground {
+  filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.093));
+}
+
 #ground .ground.one {
   width: calc($diameter1 * 10);
-  height: $diameter1;
-  background-color: $grass_color;
-  position: absolute;
-  top: calc(-1vh - 1vw);
-  left: calc(-2vh - 2vw);
+  height: calc($diameter1 * 2);
   border-top-right-radius: 100%;
+  background: linear-gradient(
+    $grass_color,
+    $grass_color,
+    rgb(0, 90, 0),
+    rgba(0, 0, 0, 0)
+  );
+  position: absolute;
+  top: calc(-3vh - 3vw);
+  left: 0;
 }
 
 #ground .ground.two {
-  width: calc($diameter1 * 10);
-  height: $diameter1;
-  background-color: $grass_color;
+  width: calc($diameter2 * 10);
+  height: $diameter2;
+  border-top-left-radius: 100%;
+  background-color: $grass_color_background;
   position: absolute;
-  top: calc(-1vh - 1vw);
-  left: calc(-2vh - 2vw);
-  border-top-right-radius: 100%;
+  top: calc(-4vh - 4vw);
+  right: 0;
+  z-index: -1;
 }
 
 @media screen and (max-width: 600px) and (min-height: 600px) {
@@ -447,4 +470,69 @@ $diameter1: calc(8vh + 8vw);
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+//future forecast viewer
+
+#futureforecast {
+  z-index: 999;
+  position: absolute;
+  width: 80%;
+  height: calc(22.5vh + 22.5vw);
+  top: 150%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: calc(1vh + 1vw);
+}
+
+$top_header_height: calc(5vh + 5vw);
+
+#futureforecast #top {
+  width: 100%;
+  height: $top_header_height;
+  background-color: var(--sky);
+  display: flex;
+  align-items: center;
+  padding-inline: calc(2vh + 2vw);
+}
+
+#futureforecast #top #title {
+  text-transform: uppercase;
+  letter-spacing: calc(0.1vh + 0.1vw);
+}
+
+$forecast_width: calc(30vh + 30vw);
+$forecast_days_count: 3;
+#futureforecast #top #frcst {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  right: 0;
+  width: $forecast_width;
+  height: $top_header_height;
+}
+
+#futureforecast #top #frcst .day {
+  height: 100%;
+  min-width: calc($forecast_width / 3);
+  background-color: rgba(255, 255, 255, 0.186);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: calc(1vh + 1vw);
+}
+
+#futureforecast #top #frcst .day:hover {
+  background-color: rgb(255, 238, 52);
+  color: black;
+}
+
+#futureforecast #top #frcst .day:nth-child(1) {
+  border-radius: calc(1vh + 1vw) 0 0 calc(1vh + 1vw);
 }
