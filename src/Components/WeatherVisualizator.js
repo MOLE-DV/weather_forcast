@@ -1,42 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Circle from "./Circle";
-
-function Box(props) {
-  return (
-    <div
-      className="box"
-      style={{
-        height: props.height,
-        width: props.width,
-        backgroundColor: props.color,
-        left: props.x,
-        top: props.y,
-        zIndex: props.renderQueue,
-      }}
-    ></div>
-  );
-}
-
-let sunRays = [];
-
-function Sun(props) {
-  let degrees = 0;
-  for (var i = 0; i < props.rays; i++) {
-    sunRays.push(
-      <div id="pivot" style={{ rotate: `${degrees}deg` }}>
-        <div className="ray"></div>
-      </div>
-    );
-    degrees += 360 / props.rays;
-  }
-
-  return (
-    <div className="sun">
-      <h1>{props.degrees}</h1>
-      {sunRays.slice(0, sunRays.length)}
-    </div>
-  );
-}
+import Box from "./shapes/Box.tsx";
+import Sun from "./weatherComponents/terrain/Sun.tsx";
 
 function Rain(props) {
   return (
@@ -128,7 +93,6 @@ function WeatherVisualizer(props) {
       ? localStorage.getItem("debug_weather")
       : data.current.condition.text;
 
-  //TODO:Change the ground model
   return (
     <div id="weatherVisualizer">
       <Ground />

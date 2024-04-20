@@ -16,9 +16,9 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       const city = localStorage.getItem("cityName");
-      const apiUrl = `https://api.weatherapi.com/v1/current.json?q=${localStorage.getItem(
+      const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${localStorage.getItem(
         "cityName"
-      )}&lang=${language}&key=${API_KEY}`;
+      )}&days=3&aqi=yes&alerts=no`;
 
       console.log("⚙️Reading API...");
 
@@ -78,7 +78,7 @@ function App() {
       <Header />
       <DayInfo width="fit-content" data={data} opacity="0" />
       <WeatherVisualizer data={data} />
-      <Futureforecast />
+      <Futureforecast data={data} />
       <Copy />
     </div>
   );
