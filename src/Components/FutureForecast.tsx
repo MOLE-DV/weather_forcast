@@ -43,7 +43,7 @@ function Futureforecast(props) {
           {new Date(data.forecastday[0].date).toLocaleString("en-us", {
             weekday: "long",
           })}
-          {iconTable[data.forecastday[0].day.condition.text.toLowerCase()]};
+          {iconTable[data.forecastday[0].day.condition.text.toLowerCase()]}
         </h1>
         <div id="frcst">
           {data &&
@@ -65,7 +65,12 @@ function Futureforecast(props) {
             })}
         </div>
       </div>
-      <div id="down"></div>
+      <div id="down">
+        <div id="left" className="sides">
+          <h1 id="cityName">{localStorage.getItem("cityName")}</h1>
+        </div>
+        <div id="right" className="sides"></div>
+      </div>
     </div>
   );
 }

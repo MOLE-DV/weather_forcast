@@ -48,6 +48,7 @@ function App() {
                 console.error(`❌Couldn't read API: ${resData.error.message}`);
                 setData([]);
               } else {
+                localStorage.setItem("cityName", resData.location.name);
                 console.log(`✅Succesfuly read API data`);
                 setData(resData);
               }
