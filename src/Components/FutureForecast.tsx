@@ -66,7 +66,10 @@ function Futureforecast(props) {
         </div>
       </div>
       <div id="down">
-        <div id="city "></div>
+        <div id="left" className="sides">
+          <h1 id="cityName">{localStorage.getItem("cityName")}</h1>
+        </div>
+        <div id="right" className="sides"></div>
       </div>
     </div>
   );
