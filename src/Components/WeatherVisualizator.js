@@ -5,7 +5,7 @@ import Sun from "./weatherComponents/terrain/Sun.tsx";
 
 function Rain(props) {
   return (
-    <div className="rain">
+    <div className="weather rain">
       <div
         className="drop"
         style={{ animation: "goDown 1s linear infinite" }}

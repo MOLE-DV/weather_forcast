@@ -335,7 +335,7 @@ $cloudsSettings: (
   }
 }
 
-.rain {
+.weather.rain {
   width: calc(10.5vh + 10.5vw);
   position: absolute;
   height: 1vh;
@@ -504,6 +504,7 @@ $top_header_height: calc(5vh + 5vw);
 
 $forecast_width: calc(30vh + 30vw);
 $forecast_days_count: 3;
+
 #futureforecast #top #frcst {
   display: flex;
   justify-content: center;
@@ -527,6 +528,13 @@ $forecast_days_count: 3;
   transition: 0.1s;
 }
 
+#futureforecast #top #frcst .day.selector {
+  position: absolute;
+  background-color: white;
+  left: calc(($forecast_width / 3) * 0);
+  z-index: -1;
+}
+
 #futureforecast #top #frcst .day:hover {
   background-color: rgb(255, 238, 52);
   color: black;
@@ -537,21 +545,56 @@ $forecast_days_count: 3;
   width: 100%;
   height: 100%;
   display: flex;
+  color: black;
 }
 
 #futureforecast #down .sides {
   height: 100%;
   width: 50%;
-  padding: calc(2vh + 2vw);
 }
 
 #futureforecast #down #left {
-  border-right: calc(0.1vh + 0.1vw) solid rgb(0, 0, 0);
+  color: black;
 }
 
-#futureforecast #down #cityName {
+.bottomforecast span {
+  font-size: calc(1vh + 1vw);
+  color: black;
+}
+
+.bottomforecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: calc(100% / 3);
+  height: calc(100% / 3);
   color: black;
   font-size: calc(2vh + 2vw);
+  z-index: 99999;
+  user-select: none;
+  transition: 0.1s;
+}
+
+.bottomforecast p {
+  display: flex;
+}
+
+.bottomforecast.weather p {
+  font-size: calc(1vh + 1vw);
+  font-weight: bold;
+}
+
+.bottomforecast:hover {
+  background-color: rgb(255, 238, 52);
+  color: black;
+  scale: 1.1;
+  filter: drop-shadow(0 0 calc(0.1vh + 0.1vw) rgba(0, 0, 0, 0.247));
+}
+
+.bottomforecast .unit {
+  font-size: calc(0.75vh + 0.75vw);
   text-transform: uppercase;
-  letter-spacing: calc(0.25vh + 0.25vw);
+  color: rgba(0, 0, 0, 0.637);
 }
