@@ -4,7 +4,7 @@ import DayInfo from "./Components/DayInfo";
 import React, { useState, useEffect } from "react";
 import WeatherVisualizer from "./Components/WeatherVisualizator";
 import Copy from "./Components/Copy";
-import Futureforecast from "./Components/FutureForecast.tsx";
+import Futureforecast from "./Components/Forecast/FutureForecast.tsx";
 
 function App() {
   const API_KEY = process.env.REACT_APP_TOKEN;
