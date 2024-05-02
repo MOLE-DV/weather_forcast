@@ -1,3 +1,5 @@
+@import url("../../root.css");
+
 #futureforecast {
   background-color: rgba(0, 0, 0, 0.068);
   z-index: 999;
@@ -70,19 +72,23 @@ $forecast_days_count: 3;
   height: 100%;
   display: flex;
   color: black;
+  overflow-x: scroll;
 }
 
 #futureforecast #down .sides {
   height: 100%;
   width: 50%;
+  overflow-x: scroll;
 }
 
 #futureforecast #down #left {
   color: black;
+  overflow: hidden;
 }
 
 #futureforecast #down #right {
   overflow-y: scroll !important;
+  overflow-x: scroll;
 }
 
 .bottomforecast span {
@@ -91,6 +97,7 @@ $forecast_days_count: 3;
 }
 
 .bottomforecast {
+  overflow-x: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,14 +134,31 @@ $forecast_days_count: 3;
   color: rgba(0, 0, 0, 0.637);
 }
 
-.timeWeather.hour {
-  width: 100%;
-  height: calc(2vh + 2vw);
+$hour_width: calc(2vh + 2vw);
+
+.timeWeather {
+  overflow-x: scroll;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  overflow-x: scroll;
+  width: calc($hour_width * 23);
+}
+
+.timeWeather.hour {
+  user-select: none;
+  margin-top: auto;
+  margin-bottom: 0;
+  height: 100;
+  background-color: var(--sky);
+  width: $hour_width;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-bottom: calc(0.01vh + 0.01vw) solid black;
   transition: 0.1s;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .timeWeather.hour:hover {
@@ -144,4 +168,48 @@ $forecast_days_count: 3;
 .timeWeather.hour span {
   margin-left: auto;
   margin-right: 0;
+}
+
+.timeWeather.hour .hourDisplay {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.scroll {
+  position: absolute;
+  height: calc(2vh + 2vw);
+  width: calc(2vh + 2vw);
+  border-radius: calc(0.2vh + 0.2vw);
+  background-color: rgb(0, 0, 0);
+  opacity: 0.2;
+  bottom: 0;
+  transform: translateY(-250%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1vh + 1vw);
+  user-select: none;
+}
+
+.scroll.left {
+  margin-left: calc(0.5vh + 0.5vw);
+}
+
+.scroll.right {
+  right: calc(0.5vh + 0.5vw);
+}
+
+.scroll:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+#DaySelector {
+  display: flex;
+}
+
+#forecastBoxes {
+  height: 100%;
+  width: 100%;
 }
