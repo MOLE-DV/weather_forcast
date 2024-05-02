@@ -53,7 +53,7 @@ function Futureforecast(props) {
             />
           </div>
           <div id="right" className="sides">
-            {/* <TimeWeather data={data} /> */}
+            <TimeWeather data={data} />
           </div>
         </div>
       </div>

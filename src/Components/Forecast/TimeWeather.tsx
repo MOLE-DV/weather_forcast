@@ -1,24 +1,23 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import weatherGraph from "./graphRender.ts";
 import switchDay from "./SwitchDay.ts";
 import { useContext } from "react";
 import { dayContext } from "./dayContext.ts";
 
 function TimeWeather(props) {
-  const [weather, setWeather] = useState();
+  const weather = props.data.forecastday;
   const dData = useContext(dayContext);
 
-  setWeather(props.data.forecastday);
+  if (!weather || !dData) return;
 
-  if (!weather) return;
-
+  console.log(dData);
   const hourData = weather[dData.dayData.day].hour;
 
-  document
-    .querySelectorAll("#right")![0]
-    .addEventListener("scroll", (scroll) =>
-      scrollManager(document.querySelectorAll("#right")![0], scroll)
-    );
+  if (document.querySelectorAll("#right")![0])
+    document
+      .querySelectorAll("#right")![0]
+      .addEventListener("scroll", (scroll) =>
+        scrollManager(document.querySelectorAll("#right")![0], scroll)
+      );
 
   return (
     <div className="timeWeather">
@@ -33,12 +32,12 @@ function TimeWeather(props) {
           <div
             className="timeWeather hour"
             onClick={() =>
-              switchDay(props.data, props.day, Number(hour[0]) as number)
+              dData.setDayData({ day: dData.dayData.day, hour: Number(hour) })
             }
             style={{
               height: `${
                 (hour[1].temp_c /
-                  props.data.forecastday[props.day].day.maxtemp_c) *
+                  props.data.forecastday[dData.dayData.day].day.maxtemp_c) *
                 100
               }%`,
             }}
