@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       const city = localStorage.getItem("cityName");
-      const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${localStorage.getItem(
+      const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${localStorage.getItem(
         "cityName"
       )}&days=3&aqi=yes&alerts=no`;
 
@@ -76,6 +76,7 @@ function App() {
 
   return (
     <div className="App">
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       <Header />
       <DayInfo width="fit-content" data={data} opacity="0" />
       <WeatherVisualizer data={data} />
