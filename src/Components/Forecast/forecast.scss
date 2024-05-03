@@ -150,19 +150,63 @@ $hour_width: calc(2vh + 2vw);
   margin-top: auto;
   margin-bottom: 0;
   height: 100;
-  background-color: var(--sky);
   width: $hour_width;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   border-bottom: calc(0.01vh + 0.01vw) solid black;
   transition: 0.1s;
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
+  background-color: hwb(56 0% 0% / 0.425);
+}
+
+.timeWeather.hour span{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: calc(.5vh + .5vw);
+  width: 100%;
+}
+
+.timeWeather.hour.selected{
+  background-color: rgb(255, 234, 44);
+  font-weight: bold;
+}
+
+
+.point {
+  width: 100%;
+  height: calc(0.01vh + 0.01vw);
+  margin-left: auto;
+  margin-right: auto;                                 
+  background-color: black;
+  transition: .25s;
+}
+
+.line{
+  opacity: 0;
+  width: calc(.1vh + .1vw);
+  height: 100%;
+  background-color: black;
+  transition: .25s;
 }
 
 .timeWeather.hour:hover {
-  background-color: rgb(255, 238, 52);
+  background-color: hwb(56 31% 0% / 0.2);
+}
+
+.timeWeather.hour:hover > .line {
+  opacity: 1;
+}
+
+
+.timeWeather.hour:hover > .hourDisplay {
+  font-weight: bold;
+}
+
+.timeWeather.hour:hover > span {
+  font-weight: bold;
 }
 
 .timeWeather.hour span {
@@ -173,6 +217,13 @@ $hour_width: calc(2vh + 2vw);
 .timeWeather.hour .hourDisplay {
   margin-top: auto;
   margin-bottom: 0;
+}
+
+.hourSelector{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: red;
 }
 
 .scroll {
@@ -210,6 +261,11 @@ $hour_width: calc(2vh + 2vw);
 }
 
 #forecastBoxes {
+  height: 100%;
+  width: 100%;
+}
+
+svg {
   height: 100%;
   width: 100%;
 }

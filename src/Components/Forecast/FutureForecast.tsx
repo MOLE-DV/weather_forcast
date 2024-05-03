@@ -3,15 +3,13 @@ import { useState, useEffect } from "react";
 import TimeWeather from "./TimeWeather.tsx";
 import icons from "../../weatherIcons.json";
 import "./forecast.scss";
-// import switchDay from "./SwitchDay.ts";
 import { dayContext } from "./dayContext.ts";
-import { useContext } from "react";
 import ForecastBoxes from "./ForecastBoxes.tsx";
 import DaySelector from "./DaySelector.tsx";
 
 function Futureforecast(props) {
   const [data, setData] = useState({});
-  const [dayData, setDayData] = useState({ day: 0, hour: 0 });
+  const [dayData, setDayData] = useState({ day: 0, hour: false });
 
   useEffect(() => {
     const getData = async () => {
@@ -46,11 +44,7 @@ function Futureforecast(props) {
         </div>
         <div id="down">
           <div id="left" className="sides">
-            <ForecastBoxes
-              data={data}
-              day={Number(dayData.day)}
-              hour={Number(dayData.hour)}
-            />
+            <ForecastBoxes data={data} />
           </div>
           <div id="right" className="sides">
             <TimeWeather data={data} />
