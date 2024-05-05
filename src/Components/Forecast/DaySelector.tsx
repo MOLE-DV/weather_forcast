@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { dayContext } from "./dayContext.ts";
 import { useContext } from "react";
 import "./forecast.scss";
+import icons from '../../weatherIcons.json'
 
 function DaySelector(props) {
   const dData = useContext(dayContext);
@@ -17,7 +18,11 @@ function DaySelector(props) {
   // //set color of selected day to black and reset the other days
   if (days)
     days.forEach((element, index) => {
-      element.style.color = index === dData.dayData.day ? "black" : "";
+      element.classList.remove('selected');
+   
+      if (index === dData.dayData.day) 
+        element.classList.add('selected');
+   
     });
 
   return (
@@ -33,12 +38,14 @@ function DaySelector(props) {
               key={index}
               className="day"
               onClick={() => dData.setDayData({ day: index, hour: false })}
-              style={
-                index === Number(dData.dayData.day) ? { color: "black" } : {}
-              }
             >
               {key[1].day.maxtemp_c}°C
-              <h4>{day}</h4>
+              <h4>{day}{
+                icons[
+                key[1].day.condition.text
+                  .toLowerCase()
+                  .replace(/\s+/g, "")]
+                }</h4>
             </div>
           );
         })}

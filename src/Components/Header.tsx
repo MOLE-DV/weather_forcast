@@ -1,5 +1,5 @@
 import react from "react";
-import Search from "./Search";
+import Search from "./Search.tsx";
 import React from 'react';
 
 function Menu(){

@@ -230,3 +230,20 @@ $diameter2: calc(8vh + 8vw);
   right: 0;
   z-index: -1;
 }
+
+@media screen and (max-width: 910px){
+  .sun{
+    top: calc(8vh + 8vw);
+    right: calc(3vh + 3vw);
+    scale: 1;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .sun{
+    top:auto;
+    bottom: calc(20vh + 20vw);
+    right: calc(8vh + 8vw);
+    scale: 1.5;
+  }
+}

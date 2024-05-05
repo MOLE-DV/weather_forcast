@@ -55,7 +55,7 @@ function TimeWeather(props) {
               height: `${
                 (hour[1].temp_c /
                   props.data.forecastday[dData.dayData.day].day.maxtemp_c) *
-                100
+                95
               }%`,
             }}
           >

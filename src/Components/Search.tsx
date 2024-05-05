@@ -1,5 +1,6 @@
 import cities from "../cities.json";
 import countries from "../countries.json";
+import React from "react";
 
 async function sleep(s) {
   return new Promise((resolve) => setTimeout(resolve, s * 1000));
@@ -12,7 +13,7 @@ function SearchButton() {
       onClick={() => {
         localStorage.setItem(
           "cityName",
-          document.getElementById("input").value
+          document.getElementById("input")!.value
         );
         window.location.reload();
       }}
@@ -29,12 +30,14 @@ window.onload = () => {
     window.location.reload();
   }
 
-  if (document.getElementById("input") !== undefined) {
-    document.getElementById("input").addEventListener("keyup", async (e) => {
-      let input = document.getElementById("input").value;
-      let matches = [];
 
-      if (input !== "") {
+
+  if (document.getElementById("input")!== undefined) {
+    document.getElementById("input")!.addEventListener("keyup", async (e) => {
+      let input = document.getElementById("input")!.value;
+      let matches: string[] = [];
+
+      if (input!== "") {
         cities.forEach((city) => {
           if (city.name.toLowerCase().search(input.toLowerCase()) === 0) {
             matches.push([city.name, city.country]);
@@ -42,11 +45,11 @@ window.onload = () => {
         });
       }
 
-      let hints = [];
+      let hints: string[] = [];
 
-      document.getElementById("hints").innerHTML = "";
+      document.getElementById("hints")!.innerHTML = "";
       for (let i = 0; i < 10; i++) {
-        if (matches[i] !== undefined)
+        if (matches[i]!== undefined)
           hints.push(
             `<button class="hint" onClick="localStorage.setItem('cityName', '` +
               matches[i][0] +
@@ -60,31 +63,9 @@ window.onload = () => {
           );
       }
 
-      document.getElementById("hints").innerHTML = hints.join(" ");
+      document.getElementById("hints")!.innerHTML = hints.join(" ");
 
       if (e.keyCode === 13) {
-        // let country_code = "";
-
-        // switch (input !== "debug_city") {
-        //   case true:
-        //     Object.keys(countries).forEach((country) => {
-        //       if (
-        //         input
-        //           .toLowerCase()
-        //           .includes(countries[country].toLowerCase()) === true
-        //       ) {
-        //         input = input
-        //           .toLowerCase()
-        //           .replace(countries[country].toLowerCase(), "")
-        //           .trim();
-        //         country_code = ", " + country;
-        //       }
-        //     });
-        //     break;
-        //   default:
-        //     break;
-        // }
-
         localStorage.setItem("cityName", input);
         cloudsGoRight();
         await sleep(0.5);
@@ -104,7 +85,11 @@ function Search(props) {
   return (
     <div id="searchBar">
       <div id="top">
-        <input id="input" placeholder={props.placeholder} autoComplete="off" />
+        <input
+          id="input"
+          placeholder={props.placeholder}
+          autoComplete="off"
+        />
         <SearchButton />
         <div id="srch_underline"></div>
       </div>
