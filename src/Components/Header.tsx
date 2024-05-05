@@ -1,5 +1,6 @@
 import react from "react";
 import Search from "./Search";
+import React from 'react';
 
 function Menu(){
     return (

@@ -1,11 +1,11 @@
 import "./App.scss";
-import Header from "./Components/Header";
-import DayInfo from "./Components/DayInfo";
+import Header from "./Components/Header.tsx";
+import DayInfo from "./Components/DayInfo.tsx";
 import React, { useState, useEffect } from "react";
-import WeatherVisualizer from "./Components/WeatherVisualizator";
-import Copy from "./Components/Copy";
+import WeatherVisualizer from "./Components/WeatherVisualizator.tsx";
+import Copy from "./Components/Copy.tsx";
 import Futureforecast from "./Components/Forecast/FutureForecast.tsx";
-
+import './Components/weatherComponents/weather.scss'
 function App() {
   const API_KEY = process.env.REACT_APP_TOKEN;
   const [data, setData] = useState([]);
@@ -29,11 +29,7 @@ function App() {
               name: "debug_city",
             },
             current: {
-              last_updated_epoch: 1712826900,
-              last_updated: "2024-04-11 11:15",
               temp_c: 0,
-              temp_f: 0,
-              is_day: 0,
               condition: {
                 text: "debug",
               },

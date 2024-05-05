@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import Circle from "./Circle";
+import Circle from "./shapes/Circle.tsx";
 import "../Copyright.css";
+import React from 'react';
 
 function Copyright() {
   return (

@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import switchDay from "./SwitchDay.ts";
 import { useContext } from "react";
 import { dayContext } from "./dayContext.ts";
+import icons from '../../weatherIcons.json'
 
 function TimeWeather(props) {
   const weather = props.data.forecastday;
@@ -36,6 +37,11 @@ function TimeWeather(props) {
       </div>
 
       {Object.entries(hourData).map((hour) => {
+        console.log(icons[
+          hour[1].condition.text
+            .toLowerCase()
+            .replace(/\s+/g, "")
+        ])
         return (
           <div
             className="timeWeather hour"
@@ -55,7 +61,11 @@ function TimeWeather(props) {
           >
             <div className="point" />
   
-            <span>{hour[1].temp_c}°C</span>
+            <span>{hour[1].temp_c}°C {icons[
+                hour[1].condition.text
+                  .toLowerCase()
+                  .replace(/\s+/g, "")
+              ]}</span>
             <div className="hourDisplay">
               {Number(hour[0]) < 10 ? `0${hour[0]}` : hour[0]}:00
             </div>
