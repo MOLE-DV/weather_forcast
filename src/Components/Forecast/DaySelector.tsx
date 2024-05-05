@@ -36,7 +36,7 @@ function DaySelector(props) {
           return (
             <div
               key={index}
-              className="day"
+              className={index === dData.dayData.day ? "day selected" : "day"}
               onClick={() => dData.setDayData({ day: index, hour: false })}
             >
               {key[1].day.maxtemp_c}°C

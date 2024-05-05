@@ -2,7 +2,7 @@ import React from "react";
 function Sun(props) {
   return (
     <div className="sun">
-      <h1>{props.degrees}</h1>
+      <h1>{props.degrees}°C</h1>
       {Array.from({ length: props.rays }).map((v, i) => (
         <div
           key={i}
