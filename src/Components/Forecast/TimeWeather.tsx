@@ -2,23 +2,21 @@ import React, { ReactElement, useEffect, useState } from "react";
 import switchDay from "./SwitchDay.ts";
 import { useContext } from "react";
 import { dayContext } from "./dayContext.ts";
-import icons from '../../weatherIcons.json'
+import icons from "../../weatherIcons.json";
 
 function TimeWeather(props) {
   const weather = props.data.forecastday;
   const dData = useContext(dayContext);
 
   useEffect(() => {
-    document.querySelectorAll('.timeWeather.hour').forEach((element, index) => {
-      element.classList.remove('selected')
-      if(index === dData.dayData.hour) element.classList.add('selected');
-    })
-  })
-
+    document.querySelectorAll(".timeWeather.hour").forEach((element, index) => {
+      element.classList.remove("selected");
+      if (index === dData.dayData.hour) element.classList.add("selected");
+    });
+  });
 
   if (!weather || !dData) return;
 
-  console.log(dData);
   const hourData = weather[dData.dayData.day].hour;
 
   if (document.querySelectorAll("#right")![0])
@@ -36,43 +34,37 @@ function TimeWeather(props) {
         →
       </div>
 
-      {Object.entries(hourData).map((hour) => {
-        console.log(icons[
-          hour[1].condition.text
-            .toLowerCase()
-            .replace(/\s+/g, "")
-        ])
+      {Object.entries(hourData).map((hourData) => {
+        const hdata = hourData[1];
+        const hour = Number(hourData[0])
         return (
           <div
             className="timeWeather hour"
             onClick={() =>
               dData.setDayData({
                 day: dData.dayData.day,
-                hour: Number(hour[0]),
+                hour: hour,
               })
             }
             style={{
               height: `${
-                (hour[1].temp_c /
-                  props.data.forecastday[dData.dayData.day].day.maxtemp_c) *
-                95
+                hdata.temp_c > weather[dData.dayData.day].day.maxtemp_c
+                  ? 95
+                  : (hdata.temp_c / weather[dData.dayData.day].day.maxtemp_c) * 95
               }%`,
+              backgroundColor: `${hour <= 4 ? "#304B78" : hour <= 12 ? "#FFBB00" : hour < 17 ? "#008BFE" : hour < 20 ? "#FF8E00" : "#304B78"}`
             }}
           >
-            <div className="point" />
-  
-            <span>{hour[1].temp_c}°C {icons[
-                hour[1].condition.text
-                  .toLowerCase()
-                  .replace(/\s+/g, "")
-              ]}</span>
+            <span>
+              {hdata.temp_c}°C
+              {icons[hdata.condition.text.toLowerCase().replace(/\s+/g, "")]}
+            </span>
             <div className="hourDisplay">
-              {Number(hour[0]) < 10 ? `0${hour[0]}` : hour[0]}:00
+              {hour < 10 ? `0${hour}` : hour}:00
             </div>
           </div>
         );
       })}
-
     </div>
   );
 }

@@ -138,7 +138,7 @@ $forecast_days_count: 3;
   color: rgba(0, 0, 0, 0.637);
 }
 
-$time_weather_width: calc(70vh + 70vw);
+$time_weather_width: calc(100vh + 100vw);
 $hour_width: calc($time_weather_width / 23);
 
 .timeWeather {
@@ -201,7 +201,7 @@ $hour_width: calc($time_weather_width / 23);
 
 .timeWeather.hour .hourDisplay {
   margin-top: auto;
-  margin-bottom: 0;
+  margin-bottom: calc(1vh + 1vw);
 }
 
 .scroll {
